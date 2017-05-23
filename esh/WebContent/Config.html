@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>oTHE Config File</title>
+<script type="text/javascript" src="assets/js/oha/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="assets/js/oha/oha_config.js"></script>
+<script type="text/javascript" src="assets/js/oha/oha_api.js"></script>
+<script type="text/javascript">
+
+//api_ver=1;		// OHA API version support
+//var ohaVer=0;
+ 
+//var titleStr=title_conf.title.en;
+////titleStr="oMass";
+//var subtitleStr=title_conf.subtitle.en;
+
+//document.getElementById("configTitle").style.fontSize=window.screen.width/5+"px";
+//var uAgent;
+
+function OHA_GetVersion() {
+//	alert("Hello, OHA_GetLoadMode");
+//  	window.location.href='oha://version_'+sw_ver; 
+//  		return sendOhaCmd(["version", sw_ver]);
+    ohaVer=oha_api.ohaConfig.ohaVer;
+	if(ohaVer>0) {
+  		return sendOhaCmd(["version", oha_api.ohaConfig.sw_ver, ohaVer]);
+  	}
+  	else {
+  		return sendOhaCmd(["version", oha_api.ohaConfig.sw_ver]);
+  	}
+//  	return sendOhaCmd(["version", sw_ver, api_ver]);
+//  	setTimeout('setLoadMode()',100);
+}
+
+
+function OHA_GetTitle() {
+//  	return sendOhaCmd(["title", titleStr, subtitleStr]);
+  	return sendOhaCmd(["title", oha_api.getTitle(), oha_api.getSubTitle()]);
+//	setTimeout('setSwZip()',100);
+}
+    
+function OHA_GetModel() {
+//	alert("Hello, OHA_GetLoadMode");
+//  	window.location.href='oha://model_'+model+'_'+pageName; 
+  	return sendOhaCmd(["model", oha_api.ohaConfig.model, oha_api.ohaConfig.page_name]);
+//  	setTimeout('setLoadMode()',100);
+}
+
+  function sendOhaCmd(param) {
+//  	var _cmdStr="oha://";
+  	var _cmdStr="";
+  	var _cmdStrRet="";
+  	for(i=0;i<param.length;i++) {
+  		if(i!=0) {
+  			_cmdStr+="_";
+  		}
+  		_cmdStr+=encodeURI(cmdTrans(param[i]));
+//  		_cmdStr+=cmdTrans(param[i]);
+  	}
+  	// For iOS return string
+  	for(i=1;i<param.length;i++) {
+  		if(i!=1) {
+  			_cmdStrRet+="_";
+  		}
+  		_cmdStrRet+=cmdTransApple(param[i]);
+//  		_cmdStr+=cmdTrans(param[i]);
+  	}
+  	
+  	var _cmdStrX="oha://"+_cmdStr;
+//  	_cmdStr=URLEncoder.encode(_cmdStr, "otf-8");
+//      oha_api.runOhaCmd(_cmdStrX);
+//  	setTimeout(function() {
+//  		window.location.href=_cmdStrX;
+////  	alert("sendOhaCmd("+_cmdStr+")");
+//  		}, 100);
+      window.location.href=_cmdStrX;
+  	return _cmdStrRet;
+//  	window.location.href=_cmdStr;
+  }
+  
+  function cmdTrans(_str) {
+		var _tmpStr=(""+_str).replace(/@/g, "@@");
+		_tmpStr=_tmpStr.replace(/_/g, "@_");
+//		alert("cmdTrans("+_str+", "+_tmpStr+")");
+		return _tmpStr;
+  }
+  
+  function cmdTransApple(_str) {
+		var _tmpStr=(""+_str).replace(/%/g, "%%");
+		_tmpStr=_tmpStr.replace(/_/g, "%_");
+//		alert("cmdTrans("+_str+", "+_tmpStr+")");
+		return _tmpStr;
+  }
+  
+
+</script>
+<style type="text/css">
+.title {
+	text-align: center;
+	padding-top:30%;
+	padding-bottom:30%;
+}
+</style>
+</head>
+
+<body>
+<div><h1 class="title" id="configTitle">Loading...</h1></div>
+
+</body>
+
+
+</html>

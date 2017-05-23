@@ -1,0 +1,12 @@
+eclipse.preferences.version=1
+encoding//WebContent/ajax=UTF-8
+encoding//src/com/esh/dao/jdbc/JDBCBase.java=UTF-8
+encoding//src/com/esh/dao/jdbc/JDBCUtil.java=UTF-8
+encoding//src/com/esh/filter/UserFilter.java=UTF-8
+encoding//src/com/esh/globle/Constants.java=UTF-8
+encoding//src/com/esh/listener/OnLineListener.java=UTF-8
+encoding//src/com/esh/proxy/DelegatingServletProxy.java=GBK
+encoding//src/com/esh/utils/ControllerUtil.java=UTF-8
+encoding//src/com/esh/utils/JSONUtil.java=UTF-8
+encoding//src/error.bak=UTF-8
+encoding//src/error.properties=ISO-8859-1

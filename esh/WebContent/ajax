@@ -1,0 +1,97 @@
+1）登入页 signIn:
+  1. 参数 data
+    - account
+      用户名
+    - password
+      密码
+  
+  2. 返回的json
+    - status
+      表示登入状态 true成功 false失败
+    - url
+      登入成功后跳转的地址
+    - msg
+      登入失败时候的提示信息
+
+  3.示例 json
+    - {"status":false,"url":"http://www.baidu.com","msg":"用户名或密码错误"}
+  
+2）注册页 signUp:
+  1. 参数 data
+    - account
+      用户名
+    - password
+      密码
+  
+  2. 返回的json
+    - status
+      表示登入状态 true成功 false失败
+    - url
+      登入成功后跳转的地址
+    - msg
+      登入失败时候的提示信息
+
+  3.示例 json
+    - {"status":false,"url":"http://www.baidu.com","msg":"用户名或密码错误"}
+  
+3) 获取穴位信息 getAcupInfo
+  1. 参数 data:
+    - symptomId 症状id
+    - acupunctureId 穴位id
+  
+  2. 返回的json
+    - status 表示状态 true成功 false失败
+    - msg    返回的信息
+    - imgURL 返回的穴位图片地址
+    - acupunctureText 穴位说明
+
+  3. 示例 json
+   - {"status":true,"msg":"读区失败","imgURL":"./assets/images/ap/1.gif","acupunctureText":"fdsafdsa"}
+
+4) 获取穴位列表 getAcupList
+  1. 参数 data:
+    - cursympId 穴位id
+
+  2. 返回的json
+    - status 返回状态 表示请求是否成功
+    - msg 返回提示信息
+    - acupList 数组 表示返回的穴位列表
+      - id 穴位的id
+      - name 穴位名字
+  3. 示例json
+    - {"status":true,"msg":"","acupList":[{"id":"1","name":"123"},{"id":"2","name":"123"}]}
+
+5) 获取穴位对应设备的初始化参数 getAcupOpInfo
+  1. 参数 data:
+    - symptomId 症状id
+    - acupunctureId 穴位id
+
+  2. 返回的jison
+    - status 返回状态
+    - msg 返回的文本信息
+    - strength 初始强度
+    - frequency 初始频率
+    - width 初始脉冲
+    - mode 初始模式
+    - time 初始时间 单位分钟
+
+  3. 示例json
+    - {"status":true,"msg":"fdsa","strength":0,"frequency":0,"width":0,"mode":0,"time":0}
+
+6) 理疗结束上传数据 upLoadOpValues
+  1. 参数 data
+    - symptomId 症状id
+    - acupunctureId 穴位id
+    - strength 强度
+    - frequency 频率
+    - width 脉冲
+    - pattrenMode 模拟模式类型
+    - opMode 操作模式类型
+  
+  2. 返回的json
+    - status 状态
+    - msg 提示信息
+    - url 跳转地址
+
+  3. 示例json
+    - {"status":false,"url":"./questionnaire.html","msg":"用户名或密码错误"}

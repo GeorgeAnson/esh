@@ -1,0 +1,194 @@
+<!DOCTYPE html>  
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Select Mode</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/weui.min.css">
+    <link rel="stylesheet" href="./assets/css/jquery-weui.min.css">
+    <link rel="stylesheet" href="./assets/css/animate.css">
+    <link rel="stylesheet" href="./assets/css/swiper-3.4.2.min.css">
+  </head>
+  <body>
+
+    <div id="warpper">
+      <div id="bg" class="bgWhite"></div>
+      <header>
+        <div id="backBtn">
+          <div class="glyphicon glyphicon-chevron-left"></div>
+        </div>
+        <div id="title">
+          选择症状
+        </div>
+        <div id="menuBtn"> 
+        </div>
+      </header>
+      <section>
+        <div id="selectMode">
+          <div id="modeMenu">
+            <ul>
+              <li><a href="javascript:;" class="active">治疗模式</a></li>
+              <li><a href="javascript:;" class="">教学模式</a></li>
+            </ul>
+          </div>
+          <div id="itemMemu">
+            <ul>
+              <li class="list">
+                <div class="menuTitle">头痛</div>
+                <input type="hidden" class="sympId">
+                <ul>
+                  <li><a href="javascript:;" class="listItem">偏头痛<input type="hidden"></a></li>
+                  <li><a href="javascript:;" class="listItem">后脑勺痛<input type="hidden"></a></li>
+                  <li><a href="javascript:;" class="listItem">脑壳痛<input type="hidden"></a></li>
+                  <li><a href="javascript:;" class="listItem">头皮痛<input type="hidden"></a></li>
+                </ul>
+              </li>
+              <li class="list">
+                <div style="border-left: 5px solid #000" class="menuTitle">偏头痛</div>
+                <input type="hidden" class="sympId">
+                <ul>
+                  <li><a href="javascript:;" class="listItem">1<input type="hidden"></a></li>
+                  <li><a href="javascript:;" class="listItem">1<input type="hidden"></a></li>
+                  <li><a href="javascript:;" class="listItem">1<input type="hidden"></a></li>
+                  <li><a href="javascript:;" class="listItem">1<input type="hidden"></a></li>
+                </ul>
+              </li>
+              <li class="list">
+                <div style="border-left: 5px solid #f3f000" class="menuTitle">肌肉跳动</div>
+                <input type="hidden" class="sympId">
+                <ul>
+                  <li><a href="javascript:;" class="listItem">1<input type="hidden"></a></li>
+                  <li><a href="javascript:;" class="listItem">1<input type="hidden"></a></li>
+                  <li><a href="javascript:;" class="listItem">1<input type="hidden"></a></li>
+                  <li><a href="javascript:;" class="listItem">1<input type="hidden"></a></li>
+                </ul>
+              </li>
+              <li class="list">
+                <div style="border-left: 5px solid #003360" class="menuTitle">胃痛</div>
+                <input type="hidden" class="sympId">
+                <ul>
+                  <li><a href="javascript:;" class="listItem">1<input type="hidden"></a></li>
+                  <li><a href="javascript:;" class="listItem">1<input type="hidden"></a></li>
+                  <li><a href="javascript:;" class="listItem">1<input type="hidden"></a></li>
+                  <li><a href="javascript:;" class="listItem">1<input type="hidden"></a></li>
+                </ul>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+
+        <div id="describeWarpper">
+          <div id="describe">
+            <div id="img">
+              <div class="pinch-zoom">
+                <img src="assets/images/ap/1.gif"/>
+              </div>
+            </div>
+            <div id="describeInfo">
+              <div class="title">
+                穴位说明
+                <span id="hideInfo" style="float: right; padding-right: 5px; cursor: pointer;"><i class="glyphicon glyphicon-chevron-down"></i></span>
+                <span class="startBtn"><a href="javascript:;">开始治疗</a></span>
+              </div>
+              <div class="article">穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 </div>
+            </div>
+          </div>
+          <div id="selectOpMode">
+            <span class="fa fa-book"></span>
+          </div>
+          <div id="selectOpList">
+            <div class="title">
+              <span>选择穴位</span>
+              <span id="hideList" style="float: right;"><i class="glyphicon glyphicon-remove"></i></span>
+            </div>
+            <ul>
+              <!--<li class="chgDescribe"><input type="hidden"><a href="javascript:;">xx穴</a></li>-->
+            </ul>
+          </div>
+        </div>
+
+        <div id="op">
+          <div class="opPanel bgRed">
+            <div class="opPanelTitle">信息</div>
+            <div class="opPanelBody">
+              <p>当前强度: <span id="curLevel">1</span></p>
+              <p>当前模式: <span>普通模式</span></p>
+              <p>设备状态: <span id="devState">停止</span></p>
+              <p>倒计时: <span id="timerCurVal"></span></p>
+            </div>
+          </div>
+          <div class="opPanel bgDBlue">
+            <div class="opPanelTitle">设备操作</div>
+            <div class="opPanelBody">
+            </div>
+            <button class="eshBtn" id="startOrPauseBtn" style="width: 49%; margin-top: 10px; border-radius: 0px;" value="1">开始</button>
+            <button class="eshBtn" id="stopDev" style="width: 49%; margin-top: 10px; border-radius: 0px;">结束</button>
+          </div>
+          <div class="opPanel bgBlue">
+            <div class="opPanelTitle">强度设定</div>
+            <div class="opPanelBody">
+            </div>
+            <button class="eshBtn" id="levelDown" style="width: 49%; margin-top: 10px; border-radius: 0px;">轻一点</button>
+            <button class="eshBtn" id="levelUp" style="width: 49%; margin-top: 10px; border-radius: 0px;">重一点</button>
+          </div>
+          <div class="opPanel bgGreen">
+            <div class="opPanelTitle">选择模式</div>
+            <div class="opPanelBody">
+              <button class="eshBtn active modeBtn" value="3">普通模式</button>
+              <button class="eshBtn modeBtn" value="0">按压模式</button>
+              <button class="eshBtn modeBtn" value="1">揉捏模式</button>
+              <button class="eshBtn modeBtn" value="2">敲打模式</button>
+            </div>
+          </div>
+          <div class="opPanel" style="background: #34495E">
+            <div class="opPanelTitle">倒计时</div>
+            <div class="opPanelBody">
+              <button class="span4Btn chgTime" value="1">加一分钟</button>
+              <button class="span4Btn chgTime" value="-1">减一分钟</button>
+              <button class="span4Btn chgTime" value="5">加五分钟</button>
+              <button class="span4Btn chgTime" value="-5">减五分钟</button>
+              <input type="text" class="span6Input" placeholder="输入时间(分)" id="diyTime">
+              <button class="span4Btn diyTimeByNum" value="0">加</button>
+              <button class="span4Btn diyTimeByNum" value="1">减</button>
+            </div>
+            
+          </div>
+          <div class="opPanel bgPurple">
+            <div class="opPanelTitle">其他设置</div>
+            <div class="opPanelBody">
+              
+            </div>
+            <button class="eshBtn" id="settings" style="width: 80px; margin-top: 10px; border-radius: 0px;">显示</button>
+          </div>
+          <div class="opPanel bgBlack settings" style="display: none;">
+            <div class="opPanelTitle">参数设置</div>
+            <div class="opPanelBody">
+              <p>频率 &emsp;<span class="glyphicon glyphicon-plus opBtn freqOp"></span>&emsp;<span class="glyphicon" id="freqCurVal" style="color: #f39c12;">1</span>&emsp;<span class="glyphicon glyphicon-minus opBtn freqOp"></span></p>
+              <p>脉冲 &emsp;<span class="glyphicon glyphicon-plus opBtn pluseOp"></span>&emsp;<span class="glyphicon" id="pluseCurVal" style="color: #f39c12;">4</span>&emsp;<span class="glyphicon glyphicon-minus opBtn pluseOp"></p>
+            </div>
+          </div>
+        </div>
+      </section>  
+    </div>    
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/oha/jquery.cookie.js"></script>
+    <script src="assets/js/oha/oha_config.js"></script>
+    <script src="assets/js/oha/oha_api.js"></script>
+    <script src="assets/js/oha/oha_timer.js"></script>
+    <script src="assets/js/classie.js"></script>
+    <script src="./assets/js/eshAPI.js"></script>
+    <script src="assets/js/pinchzoom.min.js"></script>
+    <script src="./assets/js/layer/layer.js"></script>
+    <script src="./assets/js/jquery-weui.min.js"></script>
+    <script src="./assets/js/swiper-3.4.2.jquery.min.js"></script>
+    <script src="./assets/js/swiper.animate1.0.2.min.js"></script>
+    <script src="./assets/js/update.js"></script>
+  </body>
+</html>

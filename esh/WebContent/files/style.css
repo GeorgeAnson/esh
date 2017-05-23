@@ -1,0 +1,321 @@
+@charset "utf-8";
+/* CSS Document */
+/*font-face*/
+@font-face {
+ /* font-family: graynormal;
+  src:url(GRAYSTROKEREGULAR.otf);*/
+}
+
+/*general styling*/
+html {
+	height:100%;
+}
+
+body{
+	height:100%;
+	margin:0;
+	padding-top:0px;;
+	font-family:graynormal, "微軟正黑體",sans-serif;
+	}
+header{
+	background-color:#28A7E1;
+	height:88px;
+	}
+.main{
+/*	padding-top:50px; */
+	/*max-height:1024px;*/
+/*	height:936px;*/
+	background:#FFF;
+	/*overflow:hidden;*/
+	margin:auto;
+	/*max-width:768px;*/
+	}
+.logotitle{
+	margin:0;
+	padding:0;
+	line-height:88px;
+	color:#FFF;
+	}
+
+.container{
+	width:100%;
+	/*max-width:768px;*/
+	margin:auto;
+	}
+	
+#titlearea {
+    text-align: center;
+    width: 80%;
+    margin:auto;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 20%;
+}
+
+section{
+	padding:20px;
+	}	
+	
+.title {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#usingtime{
+	text-align:center;
+	padding-top:30px;
+	}
+	
+.timer{
+	color: #28A7E1;
+	font-size:150px;
+	}
+	
+h3.subtitle{
+	font-weight:bold;
+	}
+
+/*main ctrl*/
+.section#mainctrl{
+	text-align:center;
+	padding-top:60px;
+	}
+h4.light-gray,h3.light-gray{
+	color: #000000;
+	}
+
+.modebtn{
+	background-color: #28A7E1;
+    width:50%;
+    color: #FFF;
+    border: 0;
+    width: 100px;
+    padding: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #666;
+	position:relative;
+	cursor:pointer;
+	margin:auto;
+	}
+div.modelist,div.timelist{
+	position:absolute;
+	width:80px;
+	height:80px;
+	line-height:80px;
+	color:#FFF;
+	background-color: #28A7E1;
+	border-radius:100%;
+	border:1px solid #EEE;
+	left:10px;
+	top:-10px;
+	opacity:0;
+	z-index:-1;
+	cursor:pointer;
+	transition:top 0.3s ease,left 0.3s ease,opacity 0.3s ease;
+	overflow:hidden;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent; /* For some Androids */
+	}
+div.modelist:active,div.timelist:active{
+	background-color:#ff8800;
+	}
+#timelimit.working div.timelist:active{
+	background-color:#666;
+	}
+#mode.modebtn.active, #timelimit.modebtn.active{
+	z-index:999;
+	}
+#timelimit.working{
+	background-color:#666;
+	}
+#mode.modebtn.active .modelist,#timelimit.modebtn.active .timelist{
+	opacity:1;
+	z-index:-1;
+	}
+.strctrl{
+	width:80px;
+	height:80px;
+	background-image:url(strctrl.png);
+	display:inline-block;
+	vertical-align:middle;
+	background-size:cover;
+	opacity:0.2;
+	transition:opacity 0.5s ease;
+	}
+.strctrl.working{
+	opacity:1;
+	}
+.strctrl:active{
+	background-image:url(strctrl_active.png);
+	}
+.strctrl#reduce{
+	background-position:100% 0;
+	}
+.strctrl#add{
+	background-position:0 0;
+	}
+.strbtn{
+	display:inline-block;
+	box-shadow: 0 0 2px #aaa;
+	text-align:center;
+	border-radius:100%;
+	vertical-align:middle;
+	}
+.strbtn#reduce, .strbtn#add{
+	width:50px;
+	height:50px;
+	line-height:50px;
+	color:#FFF;
+	background-color:#28A7E1;
+	}
+.strbtn#status{
+	background-color: #28A7E1;
+	height:200px;
+	width:200px;
+	color:#FFF;
+	}
+.strbtn#status div{
+	/*position:relative;*/
+	/*padding-top:90px;*/
+	font-size:90px;
+	/*padding-top:90px;*/
+	line-height:220px;
+    }
+/*powerctrl*/
+#powerctrl{
+	text-align:center;
+	padding-top:80px;
+	}
+.detectpic{
+	width:80px;
+	height:80px;
+	background-size:cover;
+	display:inline-block;
+	vertical-align: middle;
+	}
+.detectpic#earpin{
+	background-image:url(earpin.png);
+	}
+.detectpic#phone{
+	background-image:url(phone.png);
+	}
+@-webkit-keyframes detecting{
+	 0%   {background-color:rgba(44,166,224,0)}
+	 20%  {background-color:rgba(44,166,224,1)}
+	 40%  {background-color:rgba(44,166,224,0)}
+	 60%  {background-color:rgba(44,166,224,0)}
+	 80%  {background-color:rgba(44,166,224,0)}
+	100%  {background-color:rgba(44,166,224,0)}
+}
+
+/*ologo*/
+#ologotrl{
+	text-align:center;
+	padding-top:80px;
+	}
+.ologopic{
+	width:240px;
+	height:80px;
+	background-size:cover;
+	display:inline-block;
+	vertical-align: middle;
+	}
+.ologopic#ologo{
+	background-image:url(Logo.png);
+	}
+@-webkit-keyframes ologoing{
+	 0%   {background-color:rgba(44,166,224,0)}
+	 20%  {background-color:rgba(44,166,224,1)}
+	 40%  {background-color:rgba(44,166,224,0)}
+	 60%  {background-color:rgba(44,166,224,0)}
+	 80%  {background-color:rgba(44,166,224,0)}
+	100%  {background-color:rgba(44,166,224,0)}
+}
+.loadingdots{
+	display:inline-block;
+	}
+	
+.loadingdot{
+	display:inline-block;
+	width:13px;
+	height:13px;
+	border-radius:100%;
+	border:1px solid #28A7E1;
+	}
+.loadingdot.active{
+	-webkit-animation-name:detecting;
+	-webkit-animation-duration: 3s;
+	-webkit-animation-iteration-count: infinite;
+	/*-webkit-animation-direction: alternate;*/
+	}
+.loadingdot.active:first-child {
+	-webkit-animation-delay: 0s;
+	}
+.loadingdot.active:nth-child(2) {
+	-webkit-animation-delay: 0.5s;
+	}
+.loadingdot.active:nth-child(3) {
+	-webkit-animation-delay: 1s;
+	}
+.loadingdot.active:nth-child(4) {
+	-webkit-animation-delay: 1.5s;
+	}
+.loadingdot.active:nth-child(5) {
+	-webkit-animation-delay: 2s;
+	}
+.loadingdot.active:nth-child(6) {
+	-webkit-animation-delay: 2.5s;
+	}
+/*powerbtn*/
+#powerbtn{
+	display:none;
+	}
+.powerbtn,.powctrlbtn{
+	background-image:url(opower.png);
+	background-position:0,0;
+	margin:auto;
+	position:relative;
+	width: 25vw;
+  height: 25vw;
+  background-size: cover;
+	}
+
+.powerbtn h3,.powctrlbtn h3{
+	  position: absolute;
+      width: 100%;
+      text-align: center;
+      bottom: -40%;
+	  font-size:25px;
+	}
+
+.powerbtn.noactive{
+	background-position:0,0;
+	}
+.powerbtn.active{
+	background-position:-100% 0;
+	display:none;
+	}
+.powctrlbtn.play{
+	background-position:-200% 0;
+	display:none;
+	display:inline-block;
+	margin:0 5px;
+	}
+.powctrlbtn.stop{
+	background-position:-300% 0;
+	display:none;
+	display:inline-block;
+	margin:0 5px;
+	}
+#powctrlbtn{
+	display:none;
+	text-align:center;
+	}
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>esh</display-name>
+  <welcome-file-list>
+    <welcome-file>/default_cn.html</welcome-file>
+  </welcome-file-list>
+  <!-- 首页 -->
+  <context-param>
+    <param-name>index_url</param-name>
+    <param-value>/home.html</param-value>
+  </context-param>
+  <servlet>
+    <servlet-name>dispatcherServlet</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath:springmvc.xml</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>dispatcherServlet</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>
+			classpath:applicationContext.xml
+		</param-value>
+  </context-param>
+  <!-- 上下文监听器 -->
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <!-- 编码容器 org.springframework.web.filter.CharacterEncodingFilter-->
+  <filter>
+    <filter-name>characterEncodingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>characterEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <!-- 隐藏http请求方法 -->
+  <filter>
+    <filter-name>hiddenHttpMethodFilter</filter-name>
+    <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>hiddenHttpMethodFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <!-- 在线用户监听 -->
+    <listener>
+  	<listener-class>com.esh.listener.OnLineListener</listener-class>
+  </listener>
+  <session-config>
+    <session-timeout>10</session-timeout>
+  </session-config>
+  <!-- 用户请求和用户状态过滤器 -->
+  <filter>
+    <filter-name>userFilter</filter-name>
+    <filter-class>com.esh.filter.UserFilter</filter-class>
+    <init-param>
+      <param-name>pass</param-name>
+      <param-value>/logOff;.*.html;.*.map;.*.jpg</param-value>
+    </init-param>
+    <init-param>
+      <param-name>error_url</param-name>
+      <param-value>/cover.html</param-value>
+    </init-param>
+    <init-param>
+      <param-name>userConstants</param-name>
+      <param-value>user</param-value>
+    </init-param>
+    <init-param>
+      <param-name>init_config</param-name>
+      <param-value>/Config.html;/default_cn.html;/cover.html;/signin.html;/signupSec.html;/signIn;/home.html;.*.html;.*.txt;.*.js;.*.css;.*.png;.*.woff;.*.ttf;.*.svg;.*.gif</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>userFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <!-- 登录 -->
+  <servlet>
+    <servlet-name>loginAction</servlet-name>
+    <servlet-class>com.esh.proxy.DelegatingServletProxy</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>loginAction</servlet-name>
+    <url-pattern>/signIn</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>registerAction</servlet-name>
+    <servlet-class>com.esh.proxy.DelegatingServletProxy</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>registerAction</servlet-name>
+    <url-pattern>/signUp</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>logoutAction</servlet-name>
+    <servlet-class>com.esh.proxy.DelegatingServletProxy</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>logoutAction</servlet-name>
+    <url-pattern>/logOff</url-pattern>
+  </servlet-mapping>
+  
+</web-app>

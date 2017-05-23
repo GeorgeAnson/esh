@@ -1,0 +1,1029 @@
+/*****************************************
+* @ NISAL
+* @ FOR ALL ESH PAGES
+* @ 2017-3-29
+*****************************************/
+
+/* INIT */
+/********/
+*{margin: 0; padding: 0;}
+::scrollbar {display: none;}
+::-o-scrollbar {display: none;}
+::-webkit-scrollbar {display: none;}
+
+html{width: 100%;height: auto;font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;}
+input, button {outline: none !important;}
+#warpper{width: 100%; height: auto;}
+
+/* Common Style */
+/****************/
+
+.eshBtn{
+    width: 150px;
+    height: 35px;
+    border: 0 none;
+    transition: all 0.3s ease 0s;
+    background: #2980ff;
+    border-radius: 3px;
+    color: #fff;
+}
+
+.eshBtn:active{background: #2980b9;}
+
+#sidebar{
+    border-top: 1px solid #eee;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 60px;
+    background: #fff;
+}
+
+#sidebar .sideBarMenu{
+    width: 25%;
+    height: 60px;
+    float: left;
+    font-size: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#sidebar .sideBarMenu a{
+    color: #999;
+    text-decoration: none;
+}
+
+#sidebar .sideBarMenu .icon{
+    height: 40px;
+    line-height: 40px;
+}
+
+#sidebar .sideBarMenu .title{
+    font-size: 10px;
+    height: 20px;
+    line-height: 16px;
+}
+
+#sidebar .sideBarMenu .active{
+    color: #27ae60;
+}
+
+/* font color */
+/**************/
+
+.red{color: #e32222;}
+.green{color: #7ac5a5;}
+
+/* BG */
+/******/
+
+#bg{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: -1;
+}
+
+.bgBlue{background: #2980b9;}
+.bgDBlue{background: #114f98;}
+.bgRed{background: #ff6969;}
+.bgGreen{background: #7ac5a5;}
+.bgWhite{background: #fff;}
+.bgBlack{background: #000;}
+.bgYellow{background: #f6f400;}
+.bgWhite2{background: #fafafa;}
+.bgPurple{background: #9b59b6;}
+.bgOrange{background: #ff9900;}
+.bgPurpleLow{background: #bbc8e6}
+
+
+/* font color*/
+/*************/
+
+.yellow{color: #f6f400;}
+.green{color: #7ac5a5;}
+.dblue{color: #114f98;}
+
+/* HEADER */
+/**********/
+
+header{
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    z-index: 15;
+    background: #fff;
+}
+
+header #backBtn{text-align: left; padding-left: 13px;}
+header #menuBtn{text-align: right; padding-right: 13px; font-size: 25px;}
+header #title{text-align: center;}
+
+header #backBtn,
+header #menuBtn{
+    width: 20%;
+    height: 50px;
+    float: left;
+    line-height: 52px;
+    font-size: 22px;
+    color: #3498db;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+}
+
+header #backBtn:active,
+header #menuBtn:active{
+    color: #2980b9;
+}
+
+header #title{
+    font-size: 18px;
+    font-weight: 900;
+    width: 60%;
+    height: 50px;
+    float: left;
+    line-height: 50px;
+    color: #3498db;
+}
+
+/* ------------------------------------------------------------------------------------ */
+/* index */
+/*********/
+#index{
+    width: 100%;
+    padding-top: 110px;
+}
+
+#index img{
+    margin-left: 10px;
+}
+
+#index .btnGroup{
+    width: 100%;
+    margin-top: 50px;
+}
+
+#index .btnGroup div{
+    width: 50%;
+    float: left;
+    padding: 10px;
+}
+
+#index .btnGroup button{
+    width: 100%;
+    border-radius: 0px;
+    background: #27ae60;
+}
+
+/* sign in */
+/***********/
+
+#signIn{
+    width: 100%;
+    padding-top: 120px;
+}
+
+#signIn #logo{
+    width: 100%;
+    text-align: center;
+}
+
+#signIn #form{
+    margin-top: 75px;
+    width: 100%;
+    text-align: center;
+}
+
+#signIn #form input{
+    width: 80%;
+    margin-top: 10px;
+    height: 35px;
+    border: 0 none;
+    font-size: 18px;
+    border-bottom: 3px solid #27ae60;
+    padding: 0px 5px;
+}
+
+#signIn #form button{
+    width: 82%;
+    margin-top: 30px;
+    height: 35px;
+    font-size: 18px;
+}
+
+#signIn #chs{
+    margin-top: 15px;
+    width: 100%;
+    text-align: center;
+}
+
+#signIn #chs a{
+    text-decoration: none;
+}
+
+/* third party sign in */
+/***********************/
+
+#thirdParty{
+    padding-top: 180px;
+    width: 100%;
+}
+
+#thirdParty .partItem{
+    width: 33.33333%;
+    float: left;
+    text-align: center;
+    font-size: 28px;
+    color: #fff;
+}
+
+#thirdParty .partItem span{
+    padding: 20px;
+    border-radius: 50% 50%;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+}
+
+#thirdParty .partItem span:active{
+    background: #e32222;
+    color: #fff;
+}
+
+#thirdParty .partItem .title{
+    margin-top: 15px;
+    color: #999;
+    font-size: 14px;
+}
+
+/* sign up */
+/***********/
+
+#signUp{
+    width: 100%;
+    padding-top: 80px;
+}
+
+#signUp .title{
+    text-align: center;
+    font-size: 26px;
+}
+
+#signUp .subTitle{
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+
+#signUp #form{
+    margin-top: 40px;
+    width: 100%;
+    text-align: center;
+}
+
+#signUp #form .numberInput{
+    width: 85%;
+    border: 0 none;
+    border-bottom: 1px solid #27ae60;
+    padding: 0 5px;
+    font-size: 16px;
+    height: 35px;
+}
+
+#signUp #form .code{
+    width: 50%;
+    border: 0 none;
+    border-bottom: 1px solid #27ae60;
+    padding: 0 5px;
+    font-size: 16px;
+    height: 35px;
+}
+
+#signUp #form .getCode{
+    margin-top: 20px;
+    width: 35%;
+    height: 35px;
+    border-radius: 0px;
+}
+
+#signUp #form .next{
+    margin-top: 20px;
+    width: 85%;
+    height: 35px;
+    border-radius: 0px;
+}
+
+#signUp .chs{
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+#signUp .chs a{
+    text-decoration: none;
+}
+
+/* info */
+/********/
+
+#info{
+    width: 100%;
+    padding-top: 130px;
+}
+
+#info .title{
+    width: 100%;
+    text-align: center;
+    font-size: 45px;
+}
+
+#info .subTitle{
+    font-size: 16px;
+    color: #666;
+    width: 100%;
+    padding: 10px 20px;
+    margin-top: 20px;
+    text-indent: 2em;
+    text-align: center;
+}
+
+#info .btnGroup{
+    width: 100%;
+    text-align: center;
+    width: 100%;
+}
+
+#info .btnGroup button{
+    width: 85%;
+}
+
+/* select equit */
+/****************/
+
+#selectEquit{
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 60px;
+}
+
+#selectEquit .weui-media-box_appmsg{
+    text-decoration: none;
+}
+
+/* select mode */
+/***************/
+
+#selectMode{
+    position: relative;
+    width: 100%;
+    padding-top: 50px;
+}
+
+#selectMode #modeMenu{
+    width: 100%;
+    height: 40px;
+    overflow-x: scroll;
+}
+
+#selectMode #modeMenu ul,
+#selectMode #itemMemu ul{list-style-type: none; width: 100%;}
+
+#selectMode #modeMenu ul li{
+    float: left;
+    width: 33.33333%;
+    height: 50px;
+    line-height: 35px;
+    font-size: 17px;
+    text-align: center;
+    color: #7ac5a5;
+    box-sizing: border-box;
+}
+
+#selectMode #modeMenu ul li a{
+    color: #7ac5a5;
+    text-decoration: none;
+}
+
+#selectMode #modeMenu ul li a:active{
+    color: #7a95a5;
+}
+
+#selectMode #modeMenu ul .active{
+    padding-bottom: 3px;
+    border-bottom: 2px solid #3498db;
+}
+
+#selectMode #itemMemu ul li{
+    width: 100%;
+    height: auto;
+    background: #fff;
+    transition: all 0.3s ease 0s;
+}
+
+#selectMode #itemMemu ul li:active{
+    background: #eee;
+}
+
+#selectMode #itemMemu .menuTitle{
+    border-left: 5px solid #e32222;
+    line-height: 60px;
+    font-size: 22px;
+    padding-left: 20px;
+    color: #000;
+    height: 60px;
+}
+
+#selectMode #itemMemu ul li ul {
+    width: 100%;
+    height: auto;
+    list-style-type: none;
+    display: none;
+}
+
+#selectMode #itemMemu ul li ul li{
+    height: 40px;
+    color: #000;
+    line-height: 40px;
+    font-size: 18px;
+    padding-left: 25px;
+}
+
+#selectMode #itemMemu ul .active{
+    background: #eee;
+}
+
+#selectMode #itemMemu ul .list a{
+    color: #000;
+    border-left: 3px solid #ff0000;
+    display: block;
+    padding-left: 15px;
+    transition: all 0.3s ease 0s;
+}
+
+#selectMode #itemMemu ul .list a:active{
+    background: #eee;
+    text-decoration: none;
+}
+
+#selectMode #itemMemu ul li ul li:active{
+    background: #fff;
+}
+
+/* describe */
+/************/
+
+
+#describe{
+    width: 100%;
+    padding-top: 50px;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    right: -100%;
+}
+
+#describe #img img{
+    width: 100%;
+}
+
+#describe #describeInfo{
+    border-top: 1px dashed #eee;
+    width: 100%;
+    position: fixed;
+    height: 140px;
+    background: #fff;
+    z-index: 50;
+    bottom: 0px;
+    right: -100%;
+}
+
+#describe #describeInfo .title{
+    color: #7ac5a5;
+    font-weight: 900;
+    font-size: 16px;
+    padding: 10px 10px;
+    padding-bottom: 0px;
+}
+
+#describe #describeInfo .article{
+    margin: 10px;
+    margin-bottom: 0px;
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 90px;
+}
+
+#describe #describeInfo .startBtn{
+    float: right; 
+    margin-right: 10px;
+}
+
+#describe #describeInfo .startBtn a{
+    color: #2980ff;
+    text-decoration: none;
+}
+
+/* op */
+/******/
+
+#op{
+    width: 100%;
+    padding: 10px;
+    padding-top: 50px;
+    position: absolute;
+    right: -100%;
+    top: 0px;
+    background: #fff;
+}
+
+#op .opPanel{
+    margin-bottom: 10px;
+    width: 100%;
+    color: #fff;
+    padding: 10px;
+}
+
+#op .opPanelTitle{
+    font-weight: 900;
+    border-bottom: 1px dashed #fff;
+    padding-bottom: 10px;
+}
+
+#op .opPanelBody{
+    padding-top: 10px;
+}
+
+#op .opPanelBody button{
+    width: 49%;
+    display: inline-block;
+    border-radius: 0px;
+    background: #27ae60;
+}
+
+#op .opPanelBody .active{
+    background: #279060;
+}
+
+#op .opPanelBody button:active{
+    background: #279060;
+}
+
+#op .opPanelBody button:first-child{
+    margin-bottom: 8px;
+}
+
+#op .opPanelBody .span4Btn{
+    width: 24%;
+    border: 0px;
+    height: 35px;   
+    background: #2c3e50;
+    transition: all 0.3s ease 0s;
+}
+
+#op .opPanelBody .span4Btn:active{
+    background: #333;
+}
+
+#op .opPanelBody .span6Input{
+    width: 48.5%;
+    height: 35px;
+    border: 0 none;
+    background: none;
+    border-bottom: 3px dashed #2c3e50;
+    text-align: center;
+    font-size: 20px;
+}
+
+#op .opPanelBody .glyphicon{
+    color: #eee;
+    font-size: 18px;
+    font-weight: 900;
+}
+
+#op .opPanelBody .setTime{
+    width: 100%;
+    border: 0 none;
+    height: 35px;
+    border-bottom: 3px solid #fff;
+    background: none;
+}
+
+#op .opPanelBody input::-webkit-input-placeholder{
+    color: #fff !important;
+}
+
+#op .opPanelBody .opBtn{
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+#op .opPanelBody .opBtn:active{
+    color: #e32222;
+}
+
+#selectOpMode{
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    z-index: 150;
+    top: 70px;
+    right: -100%;
+    background: #f2545f;
+    color: #fff;
+    text-align: center;
+    font-size: 25px;
+    line-height: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    border-radius: 50% 50%;
+    box-shadow: 0px 0px 10px #000;
+}
+
+#selectOpMode:active{
+    background: #e67e22;
+}
+
+#selectOpList{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 50px;
+    right: -100%;
+    z-index: 151;
+    background: #fff;
+    padding-bottom: 50px;
+    
+}
+
+#selectOpList .title{
+    font-size: 18px;
+    padding: 0px 15px;
+}
+
+#selectOpList .glyphicon-remove{
+    cursor: pointer;
+}
+
+#selectOpList ul{
+    padding-bottom: 30px;
+    list-style-type: none;
+    overflow-y: scroll;
+    height: 100%;
+}
+
+#selectOpList ul li{
+    padding: 0 15px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    border-bottom: 1px dashed #eee;
+}
+
+#selectOpList ul li:active{
+    background: #eee;
+}
+
+#selectOpList ul li a{
+    text-decoration: none;
+}
+
+/* questionnaire style */
+/***********************/
+
+#questionnaire{
+    width: 100%;
+    padding-top: 50px;
+}
+
+#questionnaire .questionnairePanel{
+    margin: 10px;
+    padding: 5px;
+    border-bottom: 1px dashed #aaa;
+}
+
+#questionnaire .questionnairePanel:last-child{
+    border: 0 none;
+}
+
+#questionnaire .questionnairePanel .checkbox-inline{
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding-left: 0;
+    padding-right: 10px;
+}
+
+/* user menu style */
+/*******************/
+
+#userMenu{
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 60px;
+}
+
+#userMenu #head{
+    width: 100%;
+    text-align: center;
+}
+
+#userMenu #head #headImg{
+    width: 100%;
+    text-align: center;
+}
+
+#userMenu #head #headImg img{
+    border-radius: 50% 50%;
+    width: 90px;
+    padding-top: 20px;
+}
+
+#userMenu #head #nickName{
+    font-size: 16px;
+    padding-top: 10px;
+}
+
+#userMenu #head #headItem{
+    padding-top: 5px;
+}
+
+#userMenu #menuLists,
+#userMenu #menuLists ul,
+#userMenu #menuLists ul li{
+    width: 100%;
+}
+
+#userMenu #menuLists ul{
+    margin-top: 15px;
+}
+
+#userMenu #menuLists ul li{
+    padding: 10px;
+    padding-left: 5;
+    font-size: 16px;
+    border-top: 1px dashed #eee;
+    height: 50px;
+    line-height: 30px;
+    transition: all 0.3s ease 0s;
+}
+
+#userMenu #menuLists ul li:last-child{
+    border-bottom: 1px dashed #eee;
+}
+
+#userMenu #menuLists ul li:active{
+    background: #eee;
+}
+
+/* editor style */
+/****************/
+
+#editor{
+    width: 100%;
+    padding-top : 50px;
+}
+
+#editor .list,
+#editor .list li{
+    width: 100%;
+}
+
+#editor .list{
+    margin-bottom: 30px;
+}
+
+#editor .list li{
+    padding: 10px;
+    padding-left: 5;
+    font-size: 16px;
+    border-top: 1px dashed #eee;
+    height: 50px;
+    line-height: 27px;
+}
+
+#editor .list li:last-child{
+    border-bottom: 1px dashed #eee;    
+}
+
+#editor .list li span{
+    display: inline-block;
+}
+
+#editor .list li .left{
+    width: 30%;
+    color: #1abc9c;
+}
+
+#editor .list li .right{
+    width: 65%;
+}
+
+#editor .list li .right input{
+    border: 0 none;
+}
+
+/* chat style */
+/**************/
+
+#chat{
+    width: 100%;
+    padding-top: 50px;
+}
+
+#chat #chatContent{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+#chat #chatContent .chatBlock{
+    width: 80%;
+    float: left;
+    text-align: left;
+}
+
+#chat #chatContent .chatBlock .left{
+    width: 20%;
+    float: left;
+}
+
+#chat #chatContent .chatBlock .left img{
+    width: 100%;
+}
+
+#chat #chatContent .chatBlock .right{
+    width: 80%;
+    float: left;
+}
+
+#chat #chatContent .chatBlockMe{
+    width: 80%;
+    float: right;
+}
+
+#chat #chatContent .chatBlockMe .left{
+    width: 80%;
+    float: left;
+    text-align: right;
+}
+
+#chat #chatContent .chatBlockMe .right{
+    width: 20%;
+    float: left;
+}
+
+#chat #chatContent .chatBlockMe .right img{
+    width: 100%;
+}
+
+#chat #chatContent .chatBlockMe::after,
+#chat #chatContent .chatBlock::after{
+    clear: both;
+}
+
+#chat #chatContent .chatBlockMe,
+#chat #chatContent .chatBlock{
+    margin-bottom: 20px;
+}
+
+#chat #chatContent .chatBlockMe .left .content,
+#chat #chatContent .chatBlock .right .content{
+    margin-top: 5px;
+    font-size: 16px;
+    line-height: 20px;
+    background: #eee;
+    padding: 10px;
+    color: #000;
+    border-radius: 4px;
+    display: inline-block;
+    text-align: left;
+}
+
+#chat #chatContent .chatBlockMe .left .content{
+    background: #1abc9c;
+}
+
+#chatInput{
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    border-top: 1px solid #eee;
+}
+
+#chatInput .stringInput{
+    width: 70%;
+    float: left;
+}
+#chatInput .stringInput input{
+    font-size: 16px;
+    margin: 5px;
+    width: 100%;
+    border: 0 none;
+    border-bottom: 3px solid #279060;
+    height: 40px;
+    border-radius: 2px;
+    padding: 0px 10px;
+}
+
+#chatInput .btner{
+    width: 15%;
+    float: left;
+    height: 50px;
+    line-height: 60px;
+    text-align: center;
+}
+
+#chatInput .btner .othOp{
+    font-size: 18px;
+    color: #279060;
+}
+
+#chatInput .btner .sendMsg{
+    font-size: 16px;
+    line-height: 30px;
+    padding-left: 12px;
+}
+
+#chatInput .btner .sendMsg{
+    border: 0 none;
+    background: none;
+    color: #279060;
+}
+
+/* acup style */
+/**************/
+
+#acup{
+    padding-top: 50px;
+    width: 100%;
+}
+
+#acup .acupBlock{
+    height: auto;
+    width: 100%;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+#acup .acupBlock .title{
+    font-size: 22px;
+    color: #1abc9c;
+    margin-bottom: 5px;
+}
+
+#acup .acupBlock .star,
+#acup .acupBlock .userCount,
+#acup .acupBlock .counts,
+#acup .acupBlock .instrduce{
+    font-size: 16px;
+    padding: 5px 0px;
+}
+
+#acup .acupBlock .userCount,
+#acup .acupBlock .star span{
+    color: #e32222;
+}
+
+/* home style */
+/**************/
+
+#home{
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 60px;
+}
+
+#home #totalInMonth{
+    width: 100%;
+    height: 200px;
+    overflow-x: scroll;
+}
+
+#home .charts{width: 100%;}
+
+#home .charts .title{
+    width: 100%;
+    text-align: center;
+    padding-bottom: 10px;
+    color: #000;
+}
+
+#home #lastTimeData{
+    padding: 5px;
+    padding-top: 20px;
+    height: 150px;
+    color: #9b59b6;
+}
+
+#home #lastTimeData .tag{
+    width: 50%;
+    float: left;
+    padding: 5px 10px;
+}
+
+#home #lastTimeData .tag .subTitle{
+    color: #fff;
+}

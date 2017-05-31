@@ -258,7 +258,6 @@ public class JDBCBase {
 		{
 			JDBCUtil.close(rs, ps, conn);
 		}
-		
 		return Count;
 	}
 	
@@ -268,8 +267,9 @@ public class JDBCBase {
 	 * @param sql sql语句
 	 * @param value 代处理的值数组
 	 */
-	protected void saveOrUpdateOrDelete(String sql,Object value[])
+	protected boolean saveOrUpdateOrDelete(String sql,Object value[])
 	{
+		boolean flag=false;
 		PreparedStatement ps=null;
 		Connection conn=JDBCUtil.getConnection();
 		
@@ -280,11 +280,12 @@ public class JDBCBase {
 			{
 				for(int i=0;i<value.length;i++)
 				{
-//					System.out.println(i+" : "+value[i]);
+					System.out.println(i+" : "+value[i]);
 					ps.setObject(i+1, value[i]);
 				}
 			}
 			ps.execute();
+			flag=true;
 		}catch(SQLException e)
 		{
 			e.printStackTrace();
@@ -292,5 +293,6 @@ public class JDBCBase {
 		{
 			JDBCUtil.close(null, ps, conn);
 		}
+		return flag;
 	}
 }

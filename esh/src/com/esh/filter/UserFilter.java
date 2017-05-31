@@ -1,24 +1,17 @@
 package com.esh.filter;
 
 import java.io.IOException;
-import java.util.Map;
 import java.util.regex.Pattern;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import com.esh.globle.Constants;
-import com.esh.utils.ControllerUtil;
-import com.esh.utils.ERRORUtil;
 
-import net.sf.json.JSONObject;
 
 
 /**
@@ -55,24 +48,14 @@ public class UserFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) resp;
 		String url=request.getRequestURI();
-		Object obj=request.getSession().getAttribute(userConstants);
-		System.out.println(obj==null||"".equals(obj)?"当前用户：null":"当前用户:"+obj);
-	//	System.out.println("请求资源："+url);
+		System.out.println("请求资源："+url);
 		boolean flag=false;
-		if(isCheckAble(request, initConfig))
-		{
-			flag=true;
-		}else if(!isUserAvaliable(request))
-		{
-			flag=false;
-		}else if(isUserAvaliable(request)&&isCheckAble(request, pass))
-		{
-			flag=true;
-		}else
-		{
-			flag=false;
-		}
+		System.out.println("information: "+request.getParameter("signin"));
 		
+		if(isCheckAble(request, initConfig)||isCheckAble(request, pass))
+		{
+			flag=true;
+		}
 		if(flag)
 		{
 			chain.doFilter(req, resp);
@@ -82,19 +65,41 @@ public class UserFilter implements Filter {
 			response.sendRedirect(request.getContextPath()+error_url);
 			return;
 		}
+		
 	}
 
-	/**
-	 * 用户是否在线
-	 * @param request
-	 * @return
-	 */
-	private boolean isUserAvaliable(HttpServletRequest request) {
-		// TODO Auto-generated method stub
-		HttpSession session=request.getSession();
-		Object obj=session.getAttribute(userConstants);
-		return obj==null||"".equals(obj)?false:true;
-	}
+//	/**
+//	 * 用户是否在线
+//	 * @param request
+//	 * @return
+//	 */
+//	private boolean isUserAvaliable(HttpServletRequest request) {
+//		// TODO Auto-generated method stub
+//		boolean flag=false;
+//		HttpSession session=request.getSession(true);
+//		Cookie[] cookies = ((HttpServletRequest) request).getCookies();     
+//        String id = null;       
+//       if (cookies != null) {     
+//           for (Cookie c : cookies) {     
+//               if (c.getName().equals("id")) {     
+//                    id = c.getValue().trim();     
+//                }
+//            }
+//        }
+//       System.out.println("用户ID："+id);
+//       if(!"".equals(id)&&id!=null)
+//       {
+//    	   UserDao userDao=new UserDaoImpl();
+//           User user=userDao.getUserByUserId(Integer.parseInt(id));
+//           System.out.println("当前用户："+user.getUname());
+//           if (user!=null) {
+//                session = ((HttpServletRequest) request).getSession(true);     
+//                session.setAttribute(Constants.USER_ID, id);
+//                flag=true;
+//            }
+//       }
+//		return flag;
+//	}
 
 	/**
 	 * check whether the url is belong to passed urls

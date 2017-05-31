@@ -1,16 +1,17 @@
 package com.esh.dao;
 
+import com.esh.entity.DetailUser;
 import com.esh.entity.User;
 
 public interface UserDao {
 
 	
 	/**
-	 * 获取用户的账号信息---待删除
-	 * @param condition
+	 * 获取用户的账号信息
+	 * @param userId
 	 * @return
 	 */
-	public User getUserByConditions(String condition);
+	public User getUserByUserId(int userId);
 
 	/**
 	 * 保存用户信息
@@ -25,4 +26,18 @@ public interface UserDao {
 	 * @return
 	 */
 	public User getUserByAccount(String account);
+
+	/**
+	 * 更新用户信息
+	 * @param user
+	 * @return
+	 */
+	public int update(User user);
+
+	/**
+	 * 保存或者更新用户详细信息
+	 * @param detailUser
+	 * @return
+	 */
+	public int saveOrUpdateUserDetailInfo(DetailUser detailUser);
 }

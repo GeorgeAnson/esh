@@ -32,10 +32,10 @@
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
-  <!-- 编码容器 org.springframework.web.filter.CharacterEncodingFilter-->
+  <!-- 编码容器 org.springframework.web.filter.CharacterEncodingFilter   com.esh.filter.SetCharacterEncodingFilter-->
   <filter>
     <filter-name>characterEncodingFilter</filter-name>
-    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <filter-class>com.esh.filter.SetCharacterEncodingFilter</filter-class>
     <init-param>
       <param-name>encoding</param-name>
       <param-value>UTF-8</param-value>
@@ -55,7 +55,7 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
   <!-- 在线用户监听 -->
-    <listener>
+  <listener>
   	<listener-class>com.esh.listener.OnLineListener</listener-class>
   </listener>
   <session-config>
@@ -67,11 +67,11 @@
     <filter-class>com.esh.filter.UserFilter</filter-class>
     <init-param>
       <param-name>pass</param-name>
-      <param-value>/logOff;.*.html;.*.map;.*.jpg</param-value>
+      <param-value>/home.html;/logOff;/userMenu;/nav;/getAcupList;/getAcupInfo;/getAcupOpInfo;/getHistOpData;/updateUserInfo</param-value>
     </init-param>
     <init-param>
       <param-name>error_url</param-name>
-      <param-value>/cover.html</param-value>
+      <param-value>/default_cn.html</param-value>
     </init-param>
     <init-param>
       <param-name>userConstants</param-name>
@@ -79,7 +79,7 @@
     </init-param>
     <init-param>
       <param-name>init_config</param-name>
-      <param-value>/Config.html;/default_cn.html;/cover.html;/signin.html;/signupSec.html;/signIn;/home.html;.*.html;.*.txt;.*.js;.*.css;.*.png;.*.woff;.*.ttf;.*.svg;.*.gif</param-value>
+      <param-value>/Config.html;/default_cn.html;/signin.html;/signupSec.html;/signIn;/signUp;/chat.html;/chatPanel.html;/selectEquit.html;/describle.html;/editor.html;/info.html;/op.html;/questionnaire.html;/selectMode.html;/treat.html;/userMenu.html;.*.txt;.*.js;.*.css;.*.png;.*.woff;.*.ttf;.*.svg;.*.gif;.*.js.map;.*.jpg</param-value>
     </init-param>
   </filter>
   <filter-mapping>
@@ -112,5 +112,60 @@
     <servlet-name>logoutAction</servlet-name>
     <url-pattern>/logOff</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <servlet-name>urlAction</servlet-name>
+    <servlet-class>com.esh.proxy.DelegatingServletProxy</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>urlAction</servlet-name>
+    <url-pattern>/userMenu</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>navAction</servlet-name>
+    <servlet-class>com.esh.proxy.DelegatingServletProxy</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>navAction</servlet-name>
+    <url-pattern>/nav</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>suggestAction</servlet-name>
+    <servlet-class>com.esh.proxy.DelegatingServletProxy</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>suggestAction</servlet-name>
+    <url-pattern>/getAcupList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>acupointAction</servlet-name>
+    <servlet-class>com.esh.proxy.DelegatingServletProxy</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>acupointAction</servlet-name>
+    <url-pattern>/getAcupInfo</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>cueDevAction</servlet-name>
+    <servlet-class>com.esh.proxy.DelegatingServletProxy</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>cueDevAction</servlet-name>
+    <url-pattern>/getAcupOpInfo</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>histOpAction</servlet-name>
+    <servlet-class>com.esh.proxy.DelegatingServletProxy</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>histOpAction</servlet-name>
+    <url-pattern>/getHistOpData</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>userInfoAction</servlet-name>
+    <servlet-class>com.esh.proxy.DelegatingServletProxy</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>userInfoAction</servlet-name>
+    <url-pattern>/updateUserInfo</url-pattern>
+  </servlet-mapping>
 </web-app>

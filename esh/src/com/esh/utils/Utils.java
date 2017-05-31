@@ -148,7 +148,7 @@ public class Utils {
 		Date sqlDate=null;
 		try 
 		{
-			SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:SS");
+			SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			java.util.Date date;
 			date = sdf.parse(ymdhms);
 			sqlDate=new Date(date.getTime());
@@ -216,7 +216,8 @@ public class Utils {
 	 * 根据byte数组，生成文件
 	 * @param path 
 	 */
-	public static void getFile(byte[] bfile, String filePath) {
+	public static boolean getFile(byte[] bfile, String filePath) {
+		boolean flag=false;
 		BufferedOutputStream bos = null;
 		FileOutputStream fos = null;
 		File file = null;
@@ -230,6 +231,7 @@ public class Utils {
 			fos = new FileOutputStream(file);
 			bos = new BufferedOutputStream(fos);
 			bos.write(bfile);
+			flag=true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -248,6 +250,7 @@ public class Utils {
 				}
 			}
 		}
+		return flag;
 	}
 
 

@@ -2,6 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">  
     <title>Select Mode</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -9,12 +12,11 @@
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/weui.min.css">
-    <link rel="stylesheet" href="./assets/css/jquery-weui.min.css">
-    <link rel="stylesheet" href="./assets/css/animate.css">
-    <link rel="stylesheet" href="./assets/css/swiper-3.4.2.min.css">
+    <link rel="stylesheet" href="assets/css/jquery-weui.min.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/swiper-3.4.2.min.css">
   </head>
   <body>
-
     <div id="warpper">
       <div id="bg" class="bgWhite"></div>
       <header>
@@ -28,6 +30,9 @@
         </div>
       </header>
       <section>
+        <!-- ***************************** 
+         * 症状选择
+        ***************************** -->
         <div id="selectMode">
           <div id="modeMenu">
             <ul>
@@ -41,52 +46,54 @@
                 <div class="menuTitle">头痛</div>
                 <input type="hidden" class="sympId">
                 <ul>
-                  <li><a href="javascript:;" class="listItem">偏头痛<input type="hidden"></a></li>
+                  <li><a href="javascript:;" class="listItem">偏头痛<input type="hidden" value="1"></a></li>
                   <li><a href="javascript:;" class="listItem">后脑勺痛<input type="hidden"></a></li>
                   <li><a href="javascript:;" class="listItem">脑壳痛<input type="hidden"></a></li>
                   <li><a href="javascript:;" class="listItem">头皮痛<input type="hidden"></a></li>
                 </ul>
               </li>
               <li class="list">
-                <div style="border-left: 5px solid #000" class="menuTitle">偏头痛</div>
+                <div style="border-left: 5px solid #000" class="menuTitle" id="headDisReq">腰酸背痛</div>
                 <input type="hidden" class="sympId">
                 <ul>
-                  <li><a href="javascript:;" class="listItem">1<input type="hidden"></a></li>
-                  <li><a href="javascript:;" class="listItem">1<input type="hidden"></a></li>
-                  <li><a href="javascript:;" class="listItem">1<input type="hidden"></a></li>
-                  <li><a href="javascript:;" class="listItem">1<input type="hidden"></a></li>
+                  <li><a href="javascript:;" class="listItem"><input type="hidden"></a></li>
+                  <li><a href="javascript:;" class="listItem"><input type="hidden"></a></li>
+                  <li><a href="javascript:;" class="listItem"><input type="hidden"></a></li>
+                  <li><a href="javascript:;" class="listItem"><input type="hidden"></a></li>
                 </ul>
               </li>
               <li class="list">
-                <div style="border-left: 5px solid #f3f000" class="menuTitle">肌肉跳动</div>
+                <div style="border-left: 5px solid #f3f000" class="menuTitle">眩晕</div>
                 <input type="hidden" class="sympId">
                 <ul>
-                  <li><a href="javascript:;" class="listItem">1<input type="hidden"></a></li>
-                  <li><a href="javascript:;" class="listItem">1<input type="hidden"></a></li>
-                  <li><a href="javascript:;" class="listItem">1<input type="hidden"></a></li>
-                  <li><a href="javascript:;" class="listItem">1<input type="hidden"></a></li>
+                  <li><a href="javascript:;" class="listItem"><input type="hidden"></a></li>
+                  <li><a href="javascript:;" class="listItem"><input type="hidden"></a></li>
+                  <li><a href="javascript:;" class="listItem"><input type="hidden"></a></li>
+                  <li><a href="javascript:;" class="listItem"><input type="hidden"></a></li>
                 </ul>
               </li>
               <li class="list">
                 <div style="border-left: 5px solid #003360" class="menuTitle">胃痛</div>
                 <input type="hidden" class="sympId">
                 <ul>
-                  <li><a href="javascript:;" class="listItem">1<input type="hidden"></a></li>
-                  <li><a href="javascript:;" class="listItem">1<input type="hidden"></a></li>
-                  <li><a href="javascript:;" class="listItem">1<input type="hidden"></a></li>
-                  <li><a href="javascript:;" class="listItem">1<input type="hidden"></a></li>
+                  <li><a href="javascript:;" class="listItem"><input type="hidden"></a></li>
+                  <li><a href="javascript:;" class="listItem"><input type="hidden"></a></li>
+                  <li><a href="javascript:;" class="listItem"><input type="hidden"></a></li>
+                  <li><a href="javascript:;" class="listItem"><input type="hidden"></a></li>
                 </ul>
               </li>
-
             </ul>
+            
           </div>
         </div>
-
+        <!-- ***************************** 
+         * 选择穴位
+        ***************************** -->
         <div id="describeWarpper">
           <div id="describe">
             <div id="img">
               <div class="pinch-zoom">
-                <img src="assets/images/ap/1.gif"/>
+                <img src="/test/image_cache/2.gif"/><!-- assets/images/ap/1.gif  -->
               </div>
             </div>
             <div id="describeInfo">
@@ -95,7 +102,7 @@
                 <span id="hideInfo" style="float: right; padding-right: 5px; cursor: pointer;"><i class="glyphicon glyphicon-chevron-down"></i></span>
                 <span class="startBtn"><a href="javascript:;">开始治疗</a></span>
               </div>
-              <div class="article">穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 穴位说明 </div>
+              <div class="article" id="acpuDesc">信息加载中，请等待.... </div>
             </div>
           </div>
           <div id="selectOpMode">
@@ -107,11 +114,13 @@
               <span id="hideList" style="float: right;"><i class="glyphicon glyphicon-remove"></i></span>
             </div>
             <ul>
-              <!--<li class="chgDescribe"><input type="hidden"><a href="javascript:;">xx穴</a></li>-->
+              <!-- <li class="chgDescribe"><input type="hidden"><a href="javascript:;">xx穴</a> -->
             </ul>
           </div>
         </div>
-
+        <!-- ***************************** 
+         * 设备操作
+        ***************************** -->
         <div id="op">
           <div class="opPanel bgRed">
             <div class="opPanelTitle">信息</div>
@@ -174,7 +183,7 @@
           </div>
         </div>
       </section>  
-    </div>    
+    </div>
 
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
@@ -183,12 +192,89 @@
     <script src="assets/js/oha/oha_api.js"></script>
     <script src="assets/js/oha/oha_timer.js"></script>
     <script src="assets/js/classie.js"></script>
-    <script src="./assets/js/eshAPI.js"></script>
+    <script src="assets/js/eshAPI.js"></script>
     <script src="assets/js/pinchzoom.min.js"></script>
-    <script src="./assets/js/layer/layer.js"></script>
-    <script src="./assets/js/jquery-weui.min.js"></script>
-    <script src="./assets/js/swiper-3.4.2.jquery.min.js"></script>
-    <script src="./assets/js/swiper.animate1.0.2.min.js"></script>
-    <script src="./assets/js/update.js"></script>
+    <script src="assets/js/layer/layer.js"></script>
+    <script src="assets/js/jquery-weui.min.js"></script>
+    <script src="assets/js/swiper-3.4.2.jquery.min.js"></script>
+    <script src="assets/js/swiper.animate1.0.2.min.js"></script>
+    <script src="assets/js/update.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+    	//生成导航条信息
+    	/*
+    	$.ajax({
+	    type: "GET",
+	    url: './nav',
+	    data:{
+	    	'type':'init'
+	    },
+	    dataType: "json",
+	    success: function(data){
+	    	createList(data[2]);
+	    },
+	    error: function(jqXHR){
+	    	layer.msg(jqXHR.status);
+	    }
+  	 });
+	
+	function createList(data){
+		var list="<ul>";
+		for(var i=0;i<data.length;i++){
+			list=list+"<li class='list'><div class='menuTitle'>"+data[i].value[0].diseaseName+"</div><ul>";
+			for(var j=1;j<data[i].value.length;j++){
+				list=list+"<li><a href='javascript:;' class='listItem'>"+data[i].value[j].diseaseName+"<input type='hidden'></a></li>";
+			}
+			list=list+"</ul></li>";
+		}
+		list=list+"</ul>"
+		//alert(list);
+		$('#itemMemu').html(list);
+	}
+    	*/
+    	
+    	//获取穴位治疗参数
+    	/*
+    	
+    	$.ajax({
+		    type: "GET",
+		    url: './getAcupOpInfo',
+		    data:{
+		    	'type':'init',
+		    	'getAcupOpInfo': JSON.stringify({"userId": 9, "acupointId": 2, "diseaseId": 2})
+		    },
+		    dataType: "json",
+		    success: function(data){
+		    	alert(data);
+		    },
+		    error: function(jqXHR){
+		    	layer.msg(jqXHR.status);
+		    }
+	  	 });
+    	
+    	*/
+    	
+    	/*
+        function upLoadOpValues(){
+    	$.ajax({
+		    type: "GET",
+		    url: './getAcupOpInfo',
+		    data:{
+		    	'type':'update',
+		    	'upLoadOpValues': JSON.stringify({"userId": 9, "acupointId": 2, "diseaseId": 2, "devStrength": 6, "devMode": 1, "devFrequency": 4, "devTime": 23, "devPulse": 3})
+		    },
+		    dataType: "json",
+		    success: function(data){
+		    	window.location.href=data.url;
+		    },
+		    error: function(jqXHR){
+		    	layer.msg(jqXHR.status);
+		    }
+	  	 });
+    }
+    	*/
+    	
+    });
+    </script>
   </body>
 </html>

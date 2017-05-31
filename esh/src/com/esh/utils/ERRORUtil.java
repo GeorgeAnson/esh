@@ -2,7 +2,11 @@ package com.esh.utils;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.Properties;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.esh.globle.Constants;
 
@@ -12,6 +16,8 @@ public class ERRORUtil {
 	private static String CODE=null;//错误类别码
 	private static String MESSAGE=null;//错误信息
 	private static Properties PROP=null;
+	
+	static Logger logger=LoggerFactory.getLogger(Constants.ERROR_CLASS_LOADER.trim());
 	
 	/**
 	 * 加载配置文件
@@ -39,7 +45,7 @@ public class ERRORUtil {
 					+"error.properties"));
 		} catch (IOException e)
 		{
-			System.out.println("载入错误码文件出错");
+			logger.info("------------------载入错误码文件出错------------------");
 			e.printStackTrace();
 		}
 	}
@@ -59,10 +65,16 @@ public class ERRORUtil {
 	{
 		CODE=new String(code+"");
 		
-		MESSAGE=PROP.getProperty(CODE);
-		if(MESSAGE==null)
+		String temp=PROP.getProperty(CODE);
+		if(temp==null)
 		{
-			MESSAGE=PROP.getProperty((Constants.UNKNOWN_REGISTER_ERROR+"").trim());
+			temp=PROP.getProperty((Constants.UNKNOWN_REGISTER_ERROR+"").trim());
+		}
+		try {
+			MESSAGE=new String(temp.getBytes("ISO-8859-1"),"UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			logger.info("----------------------错误信息转码错误----------------------------");
+			e.printStackTrace();
 		}
 		return MESSAGE;
 	}

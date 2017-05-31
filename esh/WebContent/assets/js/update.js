@@ -1,21 +1,22 @@
 /******************************
  * @Author: NISAL
  * 
- *
+ * 
 ******************************/
 
 // ajax请求url
 var ajaxURL = {
-  'signIn':      './signIn',         // 登入
-  'signUp':      './signUp',         // 注册
-  'getAcupInfo': './getAcupInfo',    // 获取穴位信息
-  'getAcupList': './getAcupList',    // 获取穴位列表
-  'getAcupOpInfo': './getAcupOpInfo', // 获取穴位理疗时候的参数
-  'upLoadOpValues': './upLoadOpValues', // 上传用户的理疗数据
+  'signIn'         : './signIn',         // 登入
+  'signUp'         : './signUp',         // 注册
+  'getAcupInfo'    : './getAcupInfo',    // 获取穴位信息
+  'getAcupList'    : './getAcupList',    // 获取穴位列表
+  'getAcupOpInfo'  : './getAcupOpInfo',  // 获取穴位理疗时候的参数
+  'upLoadOpValues' : './upLoadOpValues', // 上传用户的理疗数据
+  'updateUserInfo' : './updateUserInfo', // 更新用户个人资料
 };
 
 document.body.addEventListener('touchstart', function(){}); 
-function MsgBox(str){ layer.msg(str); }
+function MsgBox(str){layer.msg(str);}
 function ajax(obj){
   var loading = layer.load(2);
   $.ajax({
@@ -34,18 +35,19 @@ $('#backBtn span').click(function(){history.go(-1);});
   $('#signIn #login').click(function(){
     var account  = $('#signIn #account').val();
     var password = $('#signIn #password').val();
-    if(account === '' || password === ''){
-      MsgBox('用户名或密码不能为空');
-      return;
-    }
-    var obj = JSON.stringify({'account': account, 'password': password});
+    if(account === '' || password === '') return MsgBox('用户名或密码不能为空');
+    var obj = JSON.stringify({account: account, password: password});
     ajax({
       data: {
-        'signin': obj
+        'signin': obj,
       },
       url: ajaxURL['signIn'],
       success: function(data){
         if(data.status){
+          //alert('ajax: '+data.userId);
+          localStorage.inputText = data.userId;//保存用户userId
+          oha_api.cookieWrite('userId',data.userId);
+          //alert('cookie: '+oha_api.cookieRead('userId','null'));
           window.location.href = data.url;
           return;
         }
@@ -60,11 +62,8 @@ $('#backBtn span').click(function(){history.go(-1);});
   $('#signUp #form button').click(function(){
     var account = $('#signUp #form #account').val();
     var password = $('#signUp #form #password').val();
-    if(account === '' || password === ''){
-      MsgBox('请输入账号和密码');
-      return;
-    }
-    
+    if(account === '' || password === '') return MsgBox('请输入账号和密码');
+    if(/((?=[\\x21-\\x7e]+)[^A-Za-z0-9@])/g.test(account)) return MsgBox('用户名不符合规范');
     var obj = JSON.stringify({account: account, password: password});
     ajax({
       data: {
@@ -73,6 +72,7 @@ $('#backBtn span').click(function(){history.go(-1);});
       url: ajaxURL['signUp'],
       success: function(data){
         if(data.status){
+          
           window.location.href = data.url;
           return;
         }
@@ -84,26 +84,23 @@ $('#backBtn span').click(function(){history.go(-1);});
 
 // op 
 (function(){
-  var timerFlag = 0;
-  var time = 30 * 60;
-  var timer = null;
-  var pageStatus = 0; // 0选择设备 1穴位说明 2治疗
-  var infoState = -100;
-  var iconState = 'glyphicon-chevron-down';
-  var cursympId = "";
-  var curAcupId = "";
-  var startFlag = 1;
-  var initObj   = {};
+  var timerFlag   = 0;
+  var time        = 30 * 60;
+  var timer       = null;
+  var pageStatus  = 0; // 0选择设备 1穴位说明 2治疗
+  var infoState   = -100;
+  var iconState   = 'glyphicon-chevron-down';
+  var cursympId   = "";
+  var curAcupId   = "";
+  var startFlag   = 1;
+  var initObj     = {};
+  var curSympNmae = "";
+  var curAcupName = "";
+
   function setTime(val){
     val *= 60;
-    if(time + val < 30){
-      MsgBox('减去的时间大于剩余时间');
-      return;
-    }
-    if(time + val > (60 * 120)){
-      MsgBox('不能大于两个小时');
-      return;
-    }
+    if(time + val < 30) return MsgBox('减去的时间大于剩余时间');
+    if(time + val > (60 * 120)) return MsgBox('不能大于两个小时');
     time += val;     
     MsgBox('改变时间成功') 
     $('#op #timerCurVal').html(parseInt(time / 60) + '分' + (time % 60) + '秒');
@@ -177,30 +174,32 @@ $('#backBtn span').click(function(){history.go(-1);});
   });
 
   $('#op #stopDev').click(function(){
-    var val = esh.stop();
-    if(val){
-      setDevState('停止');
-      $('#op #startOrPauseBtn').val('1');
-      $('#op #startOrPauseBtn').html('开始');
-      timerFlag = 0;
-      $.alert({
-        title: '结束',
-        text: '本次理疗结束',
-        onOK: function () {
-          upLoadOpValues();
-        }
-      });
-      return;
-    }
-    MsgBox('设备不在工作状态');
-  });
+	    var val = esh.stop();
+	    if(val){
+	      setDevState('停止');
+	      $('#op #startOrPauseBtn').val('1');
+	      $('#op #startOrPauseBtn').html('开始');
+	      timerFlag = 0;
+	      $.alert({
+	        title: '结束',
+	        text: '本次理疗结束',
+	        onOK: function () {
+	          upLoadOpValues();
+	        }
+	      });
+	      return;
+	    }
+	    MsgBox('设备不在工作状态');
+	  });
 
   function upLoadOpValues(){
     ajax({
       data: {
-        upLoadOpValues: JSON.stringify({"symptomId": cursympId, "acupunctureId": curAcupId, "strength": esh.getLevel(0), "frequency": esh.getLevel(1), "width": esh.getLevel(2), "pattrenMode": esh.getPatternMode(), "opMode": esh.getOpMode()})
+    	type:'update',
+    	upLoadOpValues: JSON.stringify({"userId": 9, "acupointId": 2, "diseaseId": 2, "devStrength": 5, "devMode": 1, "devFrequency": 4, "devTime": 23, "devPulse": 3})
+        //upLoadOpValues: JSON.stringify({"symptomId": cursympId, "acupunctureId": curAcupId, "strength": esh.getLevel(0), "frequency": esh.getLevel(1), "width": esh.getLevel(2), "pattrenMode": esh.getPatternMode(), "opMode": esh.getOpMode()})
       },
-      url: ajaxURL['upLoadOpValues'],
+      url: ajaxURL['getAcupOpInfo'],
       success: function(data){
         if(data.status){
           window.location.href = data.url;
@@ -322,6 +321,7 @@ $('#backBtn span').click(function(){history.go(-1);});
     $(this).addClass('active');
   });
 
+  // 显示穴位详情
   $('#selectMode .listItem').click(function(e){
     e.stopPropagation();
     e.preventDefault();
@@ -329,16 +329,20 @@ $('#backBtn span').click(function(){history.go(-1);});
     $('#selectOpList ul').empty();
 
     cursympId = $(this).parent().parent().parent().find('.sympId').val();
+    curSympNmae = $(this).parent().parent().parent().find('.menuTitle').text();
     ajax({
       data: {
-        getAcupList: JSON.stringify({"cursympId": cursympId})
+        //getAcupList: JSON.stringify({"cursympId": cursympId})
+    	type:'init',
+	    getAcupList:JSON.stringify({'userId': 9, 'diseaseId': 2})
       },
       url: ajaxURL['getAcupList'],
       success: function(data){
-        if(data.status){
-          for(var i = 0; i < data.acupList.length; i ++){
-            var id = data.acupList[i].id;
-            var name = data.acupList[i].name;
+        if(data[0]){
+          var acup=data[1];
+          for(var i = 0; i < acup.length; i ++){
+            var id = acup[i].acupointId;
+            var name = acup[i].acupointName;
             var str = '<input type="hidden" value="' + id + '"><a href="javascript:;">' + name + '</a>';
             var li = $('<li></li>');
             li.addClass('chgDescribe');
@@ -351,60 +355,76 @@ $('#backBtn span').click(function(){history.go(-1);});
         MsgBox(data.msg);
       }
     });
+    curAcupName = $(this).text();
     getAcupInfo(cursympId, $(this).find('input').val())
     $('#title').text($(this).text());
     $('#selectMode').fadeOut();
-    $('#describe').animate({right: "0"}, 100);
-    $('#selectOpMode').animate({right: "15px"}, 100);
-    $('#describeInfo').animate({right: "0"}, 100);
+    $('#describe').show();
+    $('#selectOpMode').show();
+    $('#describeInfo').show(function(){
+      $('#describe').animate({right: "0"}, 100);
+      $('#selectOpMode').animate({right: "15px"}, 100);
+      $('#describeInfo').animate({right: "0"}, 100);
+    });
     pageStatus = 1;
     return;
   });
 
+  // 穴位说明页开始治疗按钮
   $('#describeWarpper .startBtn').click(function(e){
     e.stopPropagation();
     e.preventDefault();
     pageStatus = 2;
 
+    // 获取和显示初始化设备运行参数
     ajax({
       data: {
-        getAcupOpInfo: JSON.stringify({"symptomId": cursympId, "acupunctureId": curAcupId})
+    	  type:'init',
+    	  getAcupOpInfo: JSON.stringify({"userId": 9, "acupointId": 2, "diseaseId": 2})
       },
       url: ajaxURL['getAcupOpInfo'],
       success: function(data){
         if(data.status){
-          alert(JSON.stringify(data));
+         
           initObj = data;
-          $('#curLevel').html(data.strength);
-          $('#freqCurVal').html(data.frequency);
+          $('#curLevel').html(data.msg.devStrength);
+          $('#freqCurVal').html(data.msg.devFrequency);
           $('#curLevel').html(data.width);
-          $('#timerCurVal').html(data.time + '分0秒');
+          $('#timerCurVal').html(data.msg.devTime + '分0秒');
           return;
         }
         Msgbox(data.msg);
       }
     });
 
-    $('#title').text('脑壳疼-人中穴');
-    $('#op').animate({'right': '0'});
+    $('#title').text(curSympNmae + '-' + curAcupName);
+    $('#op').show(function(){$('#op').animate({'right': '0'});});
     $('#selectOpMode').animate({right: "-100%"}, 100);
     $('#backBtn div').fadeOut();
     $('#describe').fadeOut();
     $('#selectOpMode').fadeOut();
-    $('#describeInfo').fadeOut();
+    $('#describeInfo').fadeOut(function(){
+      $('#describe').hide();
+      $('#selectOpMode').hide();
+      $('#describeInfo').hide();
+    });
   });
 
+  // 随机生成手风琴子块左边框
   $('#selectMode .list li a').each(function(){
     $(this).css('border-left', '3px solid #' + (~~(Math.random() * (1 << 24))).toString(16));
   });
 
+  // 随机生成手风琴父块左边框
   $('#selectMode .list .menuTitle').each(function(){
     $(this).css('border-left', '5px solid #' + (~~(Math.random() * (1 << 24))).toString(16));
   });
 
+  // 修改穴位信息图片和说明
   function setChgDescribeEvent(){
     $('.chgDescribe').on('click', function(){
       getAcupInfo(cursympId, $(this).find('input').val())
+      curAcupName = $(this).text();
       $('#title').text($(this).text());
       $("#describeWarpper #selectOpList").animate({right: "-100%"}, 100);
     });
@@ -414,14 +434,15 @@ $('#backBtn span').click(function(){history.go(-1);});
   function getAcupInfo(symId, acupId){
     ajax({
       data: {
-        'getAcupInfo': JSON.stringify({'symptomId': symId, 'acupunctureId': acupId})
+        'type': 'detail',
+        'acupId':acupId
       },
       url: ajaxURL['getAcupInfo'],
       success: function(data){
         if(data.status){
           curAcupId = acupId;
-          $('#describe #img img').attr('src', data.imgURL);
-          $('#describe #describeInfo .article').text(data.acupunctureText);
+          $('#describe #img img').attr('src', data.msg.img);
+          $('#describe #describeInfo .article').text(data.msg.description);
           return;
         }
         MsgBox(data.msg);
@@ -429,6 +450,7 @@ $('#backBtn span').click(function(){history.go(-1);});
     });
   }
 
+  // treat 返回按钮
   $('#backBtn div').click(function(){
     switch (pageStatus) {
       case 0:
@@ -439,12 +461,60 @@ $('#backBtn span').click(function(){history.go(-1);});
         $("#describeWarpper #selectOpList").animate({right: "-100%"}, 100);
         $('#describe').animate({right: "-100%"}, 100);
         $('#selectOpMode').animate({right: "-100%"}, 100);
-        $('#describeInfo').animate({right: "-100%"}, 100);
+        $('#describeInfo').animate({right: "-100%"}, 100, function(){
+          $('#describeInfo').hide();
+          $('#selectOpMode').hide();
+          $('#describe').hide();
+          $("#describeWarpper #selectOpList").hide();
+        });
         pageStatus = 0;
         $('#selectMode').fadeIn();
         break;
       default:
         break;
     }
+  });
+})();
+
+// userMenu
+(function(){
+  $('#menuBtn .glyphicon-log-out').click(function(e){
+    e.stopPropagation();
+    e.preventDefault();
+    var that = $(this);
+    $.confirm("确定要退出吗?", function() {
+    	$.cookie('id', null, {
+    	  expires : new Date()
+    	 });
+      window.location.href = that.attr('href');
+    }, function(){return;});
+  });
+  $('#userMenu #menuLists ul li').click(function(){
+    window.location.href = $(this).find('input').val();
+  });
+})();
+
+// editor
+(function(){
+  $('#editor #birthday').calendar();
+  $('#editor #sex').picker({
+    title: '',
+    cols: [{
+      textAlign: 'center',
+      values: ['男', '女']
+    }]
+  });
+  $('#saveUserInfo').click(function(){
+    var sex = $('#sex').val() === '男' ? 0 : 1;
+    var bir = $('#birthday').val();
+    ajax({
+      data: {
+        'updateUserInfo': JSON.stringify({sex: sex, birthday: bir})
+      },
+      url: ajaxURL['updateUserInfo'],
+      success: function(data){
+        MsgBox(data.msg);
+      }
+    });
   });
 })();

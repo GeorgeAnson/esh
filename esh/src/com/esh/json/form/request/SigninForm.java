@@ -2,6 +2,11 @@ package com.esh.json.form.request;
 
 import com.esh.utils.Utils;
 
+/**
+ * µÇÂ¼ĞÅÏ¢ÇëÇó
+ * @author Administrator
+ *
+ */
 public class SigninForm {
 
 	private int userId=0;

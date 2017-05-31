@@ -481,6 +481,7 @@ header #title{
     z-index: 2;
     top: 0;
     right: -100%;
+    display: none;
 }
 
 #describe #img img{
@@ -535,6 +536,7 @@ header #title{
     right: -100%;
     top: 0px;
     background: #fff;
+    display: none;
 }
 
 #op .opPanel{
@@ -1002,28 +1004,48 @@ header #title{
     overflow-x: scroll;
 }
 
-#home .charts{width: 100%;}
-
-#home .charts .title{
+#home .charts{
     width: 100%;
-    text-align: center;
+    border-bottom: 1px solid #eee;
     padding-bottom: 10px;
-    color: #000;
 }
 
-#home #lastTimeData{
-    padding: 5px;
-    padding-top: 20px;
-    height: 150px;
-    color: #9b59b6;
-}
-
-#home #lastTimeData .tag{
-    width: 50%;
+#home .charts .left{
     float: left;
-    padding: 5px 10px;
+    width: 15%;
+    text-align: right;
+    font-size: 20px;
 }
 
-#home #lastTimeData .tag .subTitle{
+#home .charts .right{
+    float: left;
+    width: 85%;
+    text-align: left;
+    padding-left: 10px;
+    color: #666;
+    font-size: 14px;
+}
+
+#home .charts .right div{
+    margin-bottom: 5px;
+}
+
+#home .charts .right .title{
+    font-size: 17px;
+    line-height: 30px;
+}
+
+#home .charts .right button{
+    height: 30px;
+    width: 150px;
+    border: 0 none;
+    background: none;
+    color: #CC0066;
+    border: 1px solid #CC0066;
+    transition: all 0.3s ease 0s;
+}
+
+#home .charts .right button:active{
+    background: #CC0066;
     color: #fff;
 }

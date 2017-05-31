@@ -53,6 +53,11 @@ public class Constants {
 	public static final String SOFTWARE_OWNER = "宁工信息安全实验室";
 	
 	/**
+	 * 错误嘛解码类路径配置
+	 */
+	public static final String ERROR_CLASS_LOADER="com.esh.utils.ERRORUtil";
+	
+	/**
 	 * 初始化
 	 */
 	public static final String INIT = "init";
@@ -83,20 +88,19 @@ public class Constants {
 	public static final String DETAIL = "detail";
 	
 	/**
-	 * 用户状态活跃
+	 * 用户或者记录状态活跃
 	 */
 	public static final int STATIC_ACTIVE=1;
 	
 	/**
-	 * 用户状态非法
+	 * 用户或记录状态非法
 	 */
 	public static final int STATIC_INVALID=0;
 	
 	/**
-	 * 用户记录不存在
+	 * 用户或记录不存在
 	 */
 	public static final int STATIC_DELETE=-1;
-	
 	
 	
 	/**
@@ -137,4 +141,29 @@ public class Constants {
 	 * 非法访问
 	 */
 	public static final int INVALID_REQUEST=7;
+	
+	/**
+	 * bean实体创建失败
+	 */
+	public static final int ENTITY_INSTANCE_DEFEAT=8;
+	
+	/**
+	 * 信息加载失败，请刷新重试
+	 */
+	public static final int INFORMATION_LOAD_DEFEAT=9;
+
+	/**
+	 * 当前请求没有对应的资源
+	 */
+	public static final int INFORMATION_NOT_EXIST = 10;
+
+	/**
+	 * 信息更新成功
+	 */
+	public static final int INFORMATION_UPDATE_SECCESS = 11;
+
+	/**
+	 * 由于网络等未知因素导致，信息处理失败，请刷新重试
+	 */
+	public static final int UNKNOWN_OPERATION_ERROR = 12;
 }

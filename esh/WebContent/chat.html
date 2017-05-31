@@ -2,6 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">   
     <title>咨询</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -29,7 +32,9 @@
         <div id="chat">
 
         </div>
-
+           <section>
+		      <span id="show"></</span>
+		   </section>
         <div id="sidebar">
           <div class="sideBarMenu"><a href="./home.html"><div class="icon"><span class="fa fa-cube"></span></div><div class="title">首页</div></a></div>
           <div class="sideBarMenu"><a href="./selectEquit.html"><div class="icon"><span class="fa fa-magic"></span></div><div class="title">理疗</div></a></div>
@@ -51,5 +56,8 @@
     <script src="assets/js/jquery-weui.min.js"></script>
     <script src="assets/js/swiper-3.4.2.jquery.min.js"></script>
     <script src="assets/js/swiper.animate1.0.2.min.js"></script>
+    <script type="text/javascript">
+    	//document.getElementById('show').innerText = localStorage.inputText;  
+    </script>
   </body>
 </html>

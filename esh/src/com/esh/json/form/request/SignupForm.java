@@ -2,6 +2,11 @@ package com.esh.json.form.request;
 
 import com.esh.utils.Utils;
 
+/**
+ * ×¢²áĞÅÏ¢ÇëÇó
+ * @author Administrator
+ *
+ */
 public class SignupForm {
 
 	private String account=null;

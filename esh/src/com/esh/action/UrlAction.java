@@ -12,6 +12,11 @@ import com.esh.dao.UserDao;
 import com.esh.globle.Constants;
 import com.esh.service.UserService;
 
+/**
+ * test≤‚ ‘
+ * @author Administrator
+ *
+ */
 @Component
 public class UrlAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;

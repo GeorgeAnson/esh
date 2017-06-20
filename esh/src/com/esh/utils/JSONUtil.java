@@ -150,7 +150,6 @@ public class JSONUtil {
 					try {
 						throw new Exception(value.getClass() + " is not supported");
 					} catch (Exception e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}

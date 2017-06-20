@@ -20,8 +20,9 @@ public class HistCueData implements Serializable{
 	private Date lastCueTime=null;//上次治疗数据上传时间
 	private String diseaseName=null;//病症名称
 	private String acupointName=null;//穴位名称
-	private int devTime=0;//治疗时长
-	private int devPeriod=0;//已经治疗的治疗疗程
+	private double devTime=0;//治疗时长
+	private double devPeriod=0;//建议治疗的总治疗疗程
+	private double usrPeriod=0;//用户已经治疗的疗程
 	
 	public HistCueData() {
 		
@@ -75,26 +76,34 @@ public class HistCueData implements Serializable{
 		this.acupointName = acupointName;
 	}
 
-	public int getDevTime() {
+	public double getDevTime() {
 		return devTime;
 	}
 
-	public void setDevTime(int devTime) {
+	public void setDevTime(double devTime) {
 		this.devTime = devTime;
 	}
 
-	public int getDevPeriod() {
+	public double getDevPeriod() {
 		return devPeriod;
 	}
 
-	public void setDevPeriod(int devPeriod) {
+	public void setDevPeriod(double devPeriod) {
 		this.devPeriod = devPeriod;
+	}
+
+	public double getUsrPeriod() {
+		return usrPeriod;
+	}
+
+	public void setUsrPeriod(double usrPeriod) {
+		this.usrPeriod = usrPeriod;
 	}
 
 	@Override
 	public String toString() {
 		return "HistCueData [userId=" + userId + ", acupointId=" + acupointId + ", diseaseId=" + diseaseId
 				+ ", lastCueTime=" + lastCueTime + ", diseaseName=" + diseaseName + ", acupointName=" + acupointName
-				+ ", devTime=" + devTime + ", devPeriod=" + devPeriod + "]";
+				+ ", devTime=" + devTime + ", devPeriod=" + devPeriod + ", usrPeriod=" + usrPeriod + "]";
 	}
 }

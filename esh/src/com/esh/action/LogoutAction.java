@@ -25,8 +25,8 @@ public class LogoutAction extends HttpServlet {
 			System.out.println("注销账户:"+request.getSession().getAttribute(Constants.USER_ID));
 			request.getSession().removeAttribute(Constants.USER_ID);
 		}
-		System.out.println("注销账户后跳转："+request.getContextPath()+"/cover.html");
-		response.sendRedirect(request.getContextPath()+"/cover.html");
+		System.out.println("注销账户后跳转："+request.getContextPath()+"/default_cn.html");
+		response.sendRedirect(request.getContextPath()+"/default_cn.html");
 	}
 
 }

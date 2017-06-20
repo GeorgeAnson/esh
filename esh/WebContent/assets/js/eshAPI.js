@@ -124,3 +124,11 @@ var esh = {
 
   notice: function(){oha_api.runOhaCmd("omass://notice");}
 };
+
+oha_api.DevPlugIn = function(){
+  $.alert("设备插入");
+}
+
+oha_api.DevPlugIn = function(){
+  $.alert("设备拔出");
+}

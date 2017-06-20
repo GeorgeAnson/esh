@@ -28,6 +28,7 @@ public class Packager {
 		user.setUemail(rs.getString("email"));
 		user.setRname(rs.getString("real_name"));
 		user.setHpic(rs.getBytes("head_pic"));
+		user.setHpicName(rs.getString("pic_name"));
 		user.setUphone(rs.getString("phone"));
 		user.setUstatus(rs.getInt("user_status"));
 		user.setUlastime(rs.getDate("last_time"));		
@@ -84,9 +85,9 @@ public class Packager {
 		apuser.setUstrength(rs.getInt("ap_strength"));
 		apuser.setUmode(rs.getInt("ap_mode"));
 		apuser.setUfrequency(rs.getInt("ap_frequenry"));
-		apuser.setUtime(rs.getInt("ap_time"));
+		apuser.setUtime(rs.getDouble("ap_time"));
 		apuser.setUpulse(rs.getInt("ap_pulse"));
-		apuser.setUperiod(rs.getInt("ap_period"));
+		apuser.setUperiod(rs.getDouble("ap_period"));
 		apuser.setUpdateTime(rs.getDate("ap_update"));
 		apuser.setUser(user);
 		apuser.setAcupoint(acupoint);
@@ -108,6 +109,7 @@ public class Packager {
 		disease.setDid(rs.getInt("d_id"));
 		suggestion.setSname(rs.getString("s_name"));
 		suggestion.setScontext(rs.getString("s_context"));
+		suggestion.setSqusRecoSum(rs.getInt("qus_sum"));
 		suggestion.setSevaluation(rs.getDouble("s_evaluation"));
 		suggestion.setSperiod(rs.getInt("s_period"));
 		acupoint.setApId(rs.getInt("ap_id"));

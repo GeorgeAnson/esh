@@ -14,6 +14,7 @@
 html{width: 100%;height: auto;font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;}
 input, button {outline: none !important;}
 #warpper{width: 100%; height: auto;}
+a{text-decoration: none !important;}
 
 /* Common Style */
 /****************/
@@ -145,6 +146,8 @@ header #title{
     float: left;
     line-height: 50px;
     color: #3498db;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* ------------------------------------------------------------------------------------ */
@@ -655,7 +658,6 @@ header #title{
     z-index: 151;
     background: #fff;
     padding-bottom: 50px;
-    
 }
 
 #selectOpList .title{
@@ -827,10 +829,14 @@ header #title{
 /* chat style */
 /**************/
 
+#selChater,
 #chat{
     width: 100%;
     padding-top: 50px;
+    padding-bottom: 50px;
 }
+
+#selChater .weui-panel__bd a{text-decoration: none;}
 
 #chat #chatContent{
     width: 100%;
@@ -958,35 +964,48 @@ header #title{
 /* acup style */
 /**************/
 
-#acup{
+#recommand{
+    position: fixed;
     padding-top: 50px;
     width: 100%;
+    height: 100%;
+    display: none;
+    overflow-y: scroll;
 }
 
-#acup .acupBlock{
+#recommand .acupBlock{
     height: auto;
     width: 100%;
     padding: 10px;
     border-bottom: 1px solid #eee;
+    transition: all .3s ease 0s;
 }
 
-#acup .acupBlock .title{
+#recommand .acupBlock:active{
+    background: #eee;
+}
+
+#recommand .acupBlock .title{
     font-size: 22px;
     color: #1abc9c;
     margin-bottom: 5px;
 }
 
-#acup .acupBlock .star,
-#acup .acupBlock .userCount,
-#acup .acupBlock .counts,
-#acup .acupBlock .instrduce{
+#recommand .acupBlock .star,
+#recommand .acupBlock .userCount,
+#recommand .acupBlock .counts,
+#recommand .acupBlock .instrduce{
     font-size: 16px;
     padding: 5px 0px;
 }
 
-#acup .acupBlock .userCount,
-#acup .acupBlock .star span{
+#recommand .acupBlock .userCount,
+#recommand .acupBlock .star span{
     color: #e32222;
+}
+
+#recommand .acupBlock .counts{
+    color: #2c3e50;
 }
 
 /* home style */

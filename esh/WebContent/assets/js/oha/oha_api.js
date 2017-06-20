@@ -136,7 +136,7 @@ var oha_api=new function (){
         appVer:-1,
         html:"",
         default_language:this.langCode.English,
-        api_path:"assets/js/oha/",
+        api_path:"oha_api/",
         isReadOnly:false,
     }
 

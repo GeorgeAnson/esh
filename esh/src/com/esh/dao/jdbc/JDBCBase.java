@@ -202,8 +202,9 @@ public class JDBCBase {
 	 * @param parma
 	 * @param conn
 	 */
-	protected void update(String sql,Object[] parma,Connection conn)
+	protected boolean update(String sql,Object[] parma,Connection conn)
 	{
+		boolean flag=false;
 		PreparedStatement ps=null;
 		try
 		{
@@ -218,7 +219,7 @@ public class JDBCBase {
 			}
 			
 			ps.executeUpdate();
-		
+			flag=true;
 		}catch(SQLException e)
 		{
 			e.printStackTrace();
@@ -233,6 +234,7 @@ public class JDBCBase {
 		{
 			JDBCUtil.close(ps);
 		}
+		return flag;
 	}
 	
 	protected int getCount(String sql)

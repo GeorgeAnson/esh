@@ -56,20 +56,39 @@ public class AcupointAction extends HttpServlet{
 		 Acupoint acupoint = acupointService.getAcupointByAcupointId(acupId);
 		//组合详情数据
 		AcupointDetail acupointDetail=new AcupointDetail();
-		if(acupoint==null||(acupoint!=null&&acupoint.getPicture().getPictureId()==0))
+//		if(acupoint==null||(acupoint!=null&&acupoint.getPicture().getPictureId()==0))
+//		{
+//			//若穴位不存在或者配图未获取
+//			errorCode=Constants.INFORMATION_LOAD_DEFEAT;
+//		}else
+//		{
+//			//为不存在缓存的动图增加缓存
+//			errorCode=acupointService.initDiseasePicture(acupoint.getPicture(),
+//					this.getServletConfig().getServletContext().getRealPath("/"));
+//			//添加返回数据
+//			acupointDetail.setAcupointId(acupoint.getApId());
+//			acupointDetail.setAcupointName(acupoint.getApName());
+//			acupointDetail.setDescription(acupoint.getDesctibe());
+//			acupointDetail.setImg(request.getContextPath()+"/image_cache/"+acupoint.getPicture().getPictureName());
+//		}
+		//由于存在穴位动图不存在的情况，因此采用如下方式，不存在穴位动图则加载默认动图
+		if(acupoint!=null&&acupoint.getApId()!=0)
 		{
-			//若穴位不存在或者配图未获取
-			errorCode=Constants.INFORMATION_LOAD_DEFEAT;
-		}else
-		{
-			//为不存在缓存的动图增加缓存
-			errorCode=acupointService.initDiseasePicture(acupoint.getPicture(),
-					this.getServletConfig().getServletContext().getRealPath("/"));
+			//如果存在穴位动图，则为不存在缓存的动图增加缓存
+			if(acupoint.getPicture().getPictureId()!=0)
+			{
+				errorCode=acupointService.initDiseasePicture(acupoint.getPicture(),
+						this.getServletConfig().getServletContext().getRealPath("/"));
+			}
 			//添加返回数据
 			acupointDetail.setAcupointId(acupoint.getApId());
 			acupointDetail.setAcupointName(acupoint.getApName());
 			acupointDetail.setDescription(acupoint.getDesctibe());
-			acupointDetail.setImg("image_cache\\"+acupoint.getPicture().getPictureName());
+			//如果不存在穴位动图，则返回默认加载数据动图的url，否则返回动图的访问url
+			acupointDetail.setImg(acupoint.getPicture().getPictureId()!=0?request.getContextPath()+"/image_cache/"+acupoint.getPicture().getPictureName():request.getContextPath()+"/assets/images/default.gif");
+		}else
+		{
+			errorCode=Constants.INFORMATION_LOAD_DEFEAT;
 		}
 		
 		//返回详情数据

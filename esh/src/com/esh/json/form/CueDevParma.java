@@ -19,7 +19,7 @@ public class CueDevParma implements Serializable{
 	private int devStrength=0;//强度值
 	private int devMode=0;//设备模式值
 	private int devFrequency=0;//频率值
-	private int devTime=0;//时长值
+	private double devTime=0;//时长值
 	private int devPulse=0;//脉冲值
 	
 	public CueDevParma() {
@@ -90,11 +90,11 @@ public class CueDevParma implements Serializable{
 		this.devFrequency = devFrequency;
 	}
 
-	public int getDevTime() {
+	public double getDevTime() {
 		return devTime;
 	}
 
-	public void setDevTime(int devTime) {
+	public void setDevTime(double devTime) {
 		this.devTime = devTime;
 	}
 

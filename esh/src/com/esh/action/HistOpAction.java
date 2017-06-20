@@ -37,7 +37,7 @@ public class HistOpAction extends HttpServlet{
 		String type=request.getParameter("type").trim();
 		if(type.toLowerCase().equals(Constants.INIT.toLowerCase()))
 		{
-			//Home.html初始化后，ajax请求立即加载历史理疗穴位信息
+			//Home.html初始化后，ajax请求立即加载历史理疗穴位信息data:type:init
 			getHistCueInfo(request, response);
 		}
 	}
@@ -51,7 +51,8 @@ public class HistOpAction extends HttpServlet{
 		int errorCode=Constants.NO_ERROR_EXIST;
 		//获取历史理疗数据
 		List<HistCueData> cueDatas=new ArrayList<HistCueData>();
-		errorCode=apuserService.getHistApusersByUserId(cueDatas, 9);//(int)request.getSession().getAttribute(Constants.USER_ID)
+		System.out.println("用户id： "+(request.getParameter("userId").trim()));
+		errorCode=apuserService.getHistApusersByUserId(cueDatas, Integer.parseInt(request.getParameter("userId").trim()));//(int)request.getSession().getAttribute(Constants.USER_ID)
 		//返回历史理疗数据
 		JSONArray jsonArray=new JSONArray();
 		jsonArray.add(errorCode==Constants.NO_ERROR_EXIST?true:false);

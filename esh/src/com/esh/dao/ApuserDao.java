@@ -48,4 +48,12 @@ public interface ApuserDao {
 	 * @return
 	 */
 	public List<Apuser> getHistApusersByUserId(int userId);
+
+
+	/**
+	 * 获取用户已经治疗的总疗程
+	 * @param userId
+	 * @return
+	 */
+	public double getToaTimeByUserId(int userId);
 }

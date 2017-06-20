@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/weui.min.css">
-    <link rel="stylesheet" href="assets/css/jquery-weui.min.css">
-    <link rel="stylesheet" href="assets/css/animate.css">
-    <link rel="stylesheet" href="assets/css/swiper-3.4.2.min.css">
+    <link rel="stylesheet" href="./assets/css/jquery-weui.min.css">
+    <link rel="stylesheet" href="./assets/css/animate.css">
+    <link rel="stylesheet" href="./assets/css/swiper-3.4.2.min.css">
   </head>
   <body>
 
@@ -52,10 +52,6 @@
           </div>
         </div>
       </section>  
-     <section>
-      <span id="show"></span>
-      <div id="itemMemu"></div>
-     </section>
       <div id="sidebar">
         <div class="sideBarMenu"><a href="./home.html"><div class="icon"><span class="fa fa-cube"></span></div><div class="title">首页</div></a></div>
         <div class="sideBarMenu"><a class="active" href="./selectEquit.html"><div class="icon"><span class="fa fa-magic"></span></div><div class="title">理疗</div></a></div>
@@ -71,48 +67,8 @@
     <script src="assets/js/oha/oha_api.js"></script>
     <script src="assets/js/oha/oha_timer.js"></script>
     <script src="assets/js/classie.js"></script>
-    <script src="assets/js/jquery-weui.min.js"></script>
-    <script src="assets/js/swiper-3.4.2.jquery.min.js"></script>
-    <script src="assets/js/swiper.animate1.0.2.min.js"></script>
-    
-    <script type="text/javascript">
-    	//document.getElementById('show').innerText = localStorage.inputText; 
-    	//./treat.html
-    	/*
-    	$('#treatNav').click(function(){
-    		
-    		$.ajax({
-    		    type: "GET",
-    		    url: './nav',
-    		    data:{
-    		    	type:'init'
-    		    },
-    		    dataType: "json",
-    		    success: function(data){
-    		    	createList(data[2]);
-    		    },
-    		    error: function(jqXHR){
-    		    	layer.msg(jqXHR.status);
-    		    }
-    	  	 });
-    		
-    		function createList(data){
-        		var list="<ul>";
-        		for(var i=0;i<data.length;i++){
-        			list=list+"<li class='list'><div class='menuTitle'>"+data[i].value[0].diseaseName+"</div><ul>";
-        			for(var j=1;j<data[i].value.length;j++){
-        				list=list+"<li><a href='javascript:;' class='listItem'>"+data[i].value[j].diseaseName+"<input type='hidden'></a></li>";
-        			}
-        			list=list+"</ul></li>";
-        		}
-        		list=list+"</ul>"
-        		alert(list);
-        		$('#itemMemu').html(list);
-        	}
-    	});
-    	*/
-    </script>
-    
- 
+    <script src="./assets/js/jquery-weui.min.js"></script>
+    <script src="./assets/js/swiper-3.4.2.jquery.min.js"></script>
+    <script src="./assets/js/swiper.animate1.0.2.min.js"></script>
   </body>
 </html>

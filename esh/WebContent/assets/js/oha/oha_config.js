@@ -5,7 +5,7 @@ var oha_config={
 	model:"omass",				// Model Name, must be the same as Config.html
 	page_name:"page0",			// Page Name, different page must be different page name
     default_language:"cn",
-    api_path:"assets/js/oha/",
+    api_path:"oha_api/",
     html_config:{
 		en:"default_us.html", 		// English
 		tw:"default_tw.html", 		// Traditional Chinese

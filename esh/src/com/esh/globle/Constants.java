@@ -53,6 +53,11 @@ public class Constants {
 	public static final String SOFTWARE_OWNER = "宁工信息安全实验室";
 	
 	/**
+	 * 默认头像名
+	 */
+	public static final String DEFAULT_HEAD_PICTURE_NAME = "default.png";
+	
+	/**
 	 * 错误嘛解码类路径配置
 	 */
 	public static final String ERROR_CLASS_LOADER="com.esh.utils.ERRORUtil";
@@ -166,4 +171,5 @@ public class Constants {
 	 * 由于网络等未知因素导致，信息处理失败，请刷新重试
 	 */
 	public static final int UNKNOWN_OPERATION_ERROR = 12;
+
 }

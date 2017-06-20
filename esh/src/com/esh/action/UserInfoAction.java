@@ -17,6 +17,7 @@ import com.esh.globle.Constants;
 import com.esh.json.form.BasicUserInfo;
 import com.esh.json.form.DetailUserInfo;
 import com.esh.json.form.request.UserInfoForm;
+import com.esh.json.form.response.UserProfile;
 import com.esh.service.UserService;
 import com.esh.utils.ControllerUtil;
 import com.esh.utils.ERRORUtil;
@@ -38,6 +39,12 @@ public class UserInfoAction extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String type=request.getParameter("type").trim();
+		if(type.toLowerCase().equals(Constants.INIT.toLowerCase()))
+		{
+			//获取用户页面初始化信息
+			getUserProfile(request, response);
+		}
+		
 		if(type.toLowerCase().equals(Constants.UPDATE.toLowerCase()))
 		{
 			//用户详细信息，若存在则更新，不存在则插入
@@ -45,6 +52,34 @@ public class UserInfoAction extends HttpServlet{
 		}
 	}
 	
+	/**
+	 * 初始化用户个人界面，获取用户信息概况
+	 * @param request
+	 * @param response
+	 */
+	private void getUserProfile(HttpServletRequest request, HttpServletResponse response) {
+		int errorCode=Constants.NO_ERROR_EXIST;
+		//获取提交信息
+		String temp=request.getParameter("userId").trim();
+		int userId=Integer.parseInt(temp);
+		//获取用户概要信息
+		UserProfile userProfile=new UserProfile();
+		userProfile.setUserId(userId);
+		errorCode=userService.getUserProfile(userProfile);
+		//更新图片缓存
+		errorCode=userService.initHeadPicture(userProfile.getUhdata(), userProfile.getUhpic(), this.getServletConfig().getServletContext().getRealPath("/"));
+		userProfile.setUhdata(null);//无需返回的信息
+		userProfile.setUhpic(request.getContextPath()+"/image_cache/"+userProfile.getUhpic());
+		//返回信息
+		JSONObject data=new JSONObject();
+		data.element("status", errorCode==Constants.NO_ERROR_EXIST?true:false);
+		data.element("msg", errorCode==Constants.NO_ERROR_EXIST?userProfile:ERRORUtil.message(errorCode));
+		data.element("url", request.getContextPath()+"/userMenu.html");
+		response.setContentType("text/plain");
+		response.setCharacterEncoding("utf-8");
+		ControllerUtil.out(response, data);
+	}
+
 	/**
 	 * 存在用户详细信息则更新，不存在则插入记录
 	 * @param request
@@ -71,7 +106,7 @@ public class UserInfoAction extends HttpServlet{
 		//更新基本信息
 		errorCode=userService.updateBasicInfo(user);
 		//更新图片缓存
-		errorCode=userService.initHeadPicture(user, this.getServletConfig().getServletContext().getRealPath("/"));
+		errorCode=userService.initHeadPicture(user.getHpic(), user.getHpicName(), this.getServletConfig().getServletContext().getRealPath("/"));
 		//保存或者更新详细用户信息
 		errorCode=userService.saveOrUpdateDetailInfo(detailUser);
 		//返回更新结果

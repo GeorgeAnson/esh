@@ -2,9 +2,6 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="pragma" content="no-cache">
-    <meta http-equiv="cache-control" content="no-cache">
-    <meta http-equiv="expires" content="0">  
     <title>Signin</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -28,85 +25,48 @@
       </header>
       <section>
         <div id="questionnaire">
-          <div class="questionnairePanel">
-            <div>
-              您对本次治疗是否满意？            
-            </div>
-            <div>
-              <div>
-                <label class="checkbox-inline">
-                  <input type="radio" name="" id="" value="option1" checked> 1
-                </label>
-                <label class="checkbox-inline">
-                  <input type="radio" name="" id=""  value="option2"> 2
-                </label>
-              </div>
-            </div>
-          </div>
-          <div class="questionnairePanel">
-            <div>
-                您对治疗效果是否满意？                    
-            </div>
-            <div>
-              <div>
-                <label class="checkbox-inline">
-                  <input type="radio" name="" id="" value="option1" checked> 1
-                </label>
-                <label class="checkbox-inline">
-                  <input type="radio" name="" id=""  value="option2"> 2
-                </label>
-              </div>
-            </div>
-          </div>
-          <div class="questionnairePanel">
-            <div>
-             您对治疗时长是否需要做调整？
-            </div>
-            <div>
-              <div>
-                <label class="checkbox-inline">
-                  <input type="radio" name="" id="" value="option1" checked> 1
-                </label>
-                <label class="checkbox-inline">
-                  <input type="radio" name="" id=""  value="option2"> 2
-                </label>
-              </div>
-            </div>
-          </div>
-          <div class="questionnairePanel">
-            <div>
-                    您对我们的推荐是否有不同意见？   
-            </div>
-            <div>
-              <div>
-                <label class="checkbox-inline">
-                  <input type="radio" name="" id="" value="option1" checked> 1
-                </label>
-                <label class="checkbox-inline">
-                  <input type="radio" name="" id=""  value="option2"> 2
-                </label>
-              </div>
-            </div>
-          </div>
-          <div class="questionnairePanel">
-            <div>
-              请填写您的具体意见             
-            </div>
-            <div>
-              <div>
-                <label class="checkbox-inline">
-                  <input type="radio" name="" id="" value="option1" checked> 1
-                </label>
-                <label class="checkbox-inline">
-                  <input type="radio" name="" id=""  value="option2"> 2
-                </label>
-              </div>
-            </div>
-          </div>
           
+         
           <div class="questionnairePanel">
             <div>
-              <button class="eshBtn">提交</button>
+              请您对本次服务打分（1 - 5）
+            </div>
+            <div>
+              <div>
+                <label class="checkbox-inline">
+                  <input type="radio" name="usaf" value="1" checked> 1
+                </label>
+                <label class="checkbox-inline">
+                  <input type="radio" name="usaf" value="2"> 2
+                </label>
+                <label class="checkbox-inline">
+                  <input type="radio" name="usaf" value="3"> 3
+                </label>
+                <label class="checkbox-inline">
+                  <input type="radio" name="usaf" value="4"> 4
+                </label>
+                <label class="checkbox-inline">
+                  <input type="radio" name="usaf" value="5"> 5
+                </label>
+                
+              </div>
+            </div>
+          </div>
+
+          <div class="questionnairePanel">
+            <div>
+              治疗效果和意见
+            </div>
+            <div>
+              <div>
+                <textarea id="ueffec" rows="" cols="" style="width: 100%;height: 60px;border: 1px solid #2980b9; margin-top: 15px; outline: none;"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="questionnairePanel">
+            <div>
+              <button id="update" class="eshBtn">提交</button>
             </div>
           </div>
         </div>
@@ -120,9 +80,9 @@
     <script src="assets/js/oha/oha_api.js"></script>
     <script src="assets/js/oha/oha_timer.js"></script>
     <script src="assets/js/classie.js"></script>
-    <script src="assets/js/eshAPI.js"></script>
-    <script src="assets/js/layer/layer.js"></script>
-    <script src="assets/js/update.js"></script>
+    <script src="./assets/js/eshAPI.js"></script>
+    <script src="./assets/js/layer/layer.js"></script>
+    <script src="./assets/js/update.js"></script>
     <script>$('#backBtn div').click(function(){window.location.href = './selectEquit.html';});</script>
   </body>
 </html>

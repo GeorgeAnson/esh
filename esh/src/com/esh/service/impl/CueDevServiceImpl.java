@@ -103,7 +103,7 @@ public class CueDevServiceImpl implements CueDevService {
 			apuser.setUperiod(apuser.getUperiod()+1);
 			apuser.setUpulse(cueDevParma.getDevPulse());
 			apuser.setUstrength(cueDevParma.getDevStrength());
-			apuser.setUtime(cueDevParma.getDevTime());
+			apuser.setUtime(cueDevParma.getDevTime()<1?1:cueDevParma.getDevTime());//治疗时长默认大于等于1分钟
 			apuser.setUpdateTime(Utils.stringToExactDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())));
 			errorCode=apuserDao.saveOrUpdateCueDevParma(apuser);
 			logger.info(errorCode==Constants.NO_ERROR_EXIST?ERRORUtil.message(Constants.INFORMATION_UPDATE_SECCESS):ERRORUtil.message(errorCode));

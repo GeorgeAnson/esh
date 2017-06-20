@@ -21,7 +21,7 @@ public class Question implements Serializable {
 	private User user=null;
 	private Disease disease=null;
 	private Suggestion suggestion=null;
-	private String satisfaction=null;
+	private double satisfaction=0;
 	private Date time=null;
 	private String effection=null;
 	
@@ -61,11 +61,11 @@ public class Question implements Serializable {
 		this.suggestion = suggestion;
 	}
 
-	public String getSatisfaction() {
+	public double getSatisfaction() {
 		return satisfaction;
 	}
 
-	public void setSatisfaction(String satisfaction) {
+	public void setSatisfaction(double satisfaction) {
 		this.satisfaction = satisfaction;
 	}
 

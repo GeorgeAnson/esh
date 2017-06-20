@@ -11,6 +11,7 @@ public class Suggestion implements Serializable{
 	private int sid=0;//建议id
 	private String sname=null;//建议名称
 	private String scontext=null;//建议内容
+	private int squsRecoSum=0;//对应的问卷记录数量
 	private double sevaluation=0;//建议星级
 	private int speriod=0;//建议疗程
 	private Disease disease=null;//建议对应的症状
@@ -42,6 +43,14 @@ public class Suggestion implements Serializable{
 
 	public void setScontext(String scontext) {
 		this.scontext = scontext;
+	}
+
+	public int getSqusRecoSum() {
+		return squsRecoSum;
+	}
+
+	public void setSqusRecoSum(int squsRecoSum) {
+		this.squsRecoSum = squsRecoSum;
 	}
 
 	public double getSevaluation() {
@@ -78,7 +87,7 @@ public class Suggestion implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Suggest [sid=" + sid + ", sname=" + sname + ", scontext=" + scontext + ", sevaluation=" + sevaluation
-				+ ", speriod=" + speriod + "]";
+		return "Suggestion [sid=" + sid + ", sname=" + sname + ", scontext=" + scontext + ", squsRecoSum=" + squsRecoSum
+				+ ", sevaluation=" + sevaluation + ", speriod=" + speriod + "]";
 	}
 }

@@ -5,6 +5,7 @@ import com.esh.entity.User;
 import com.esh.json.form.request.SigninForm;
 import com.esh.json.form.request.SignupForm;
 import com.esh.json.form.request.UserInfoForm;
+import com.esh.json.form.response.UserProfile;
 
 public interface UserService {
 
@@ -62,9 +63,17 @@ public interface UserService {
 	
 	/**
 	 * 检查图片缓存，若不存在缓存，则更新
-	 * @param user
+	 * @param pic
+	 * @param picName
 	 * @param parentPath
 	 * @return
 	 */
-	public int initHeadPicture(User user, String parentPath);
+	public int initHeadPicture(byte[] pic, String picName, String parentPath);
+
+	/**
+	 * 
+	 * @param userProfile
+	 * @return
+	 */
+	public int getUserProfile(UserProfile userProfile);
 }

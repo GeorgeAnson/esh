@@ -141,4 +141,28 @@ public class ApuserDaoImpl extends JDBCBase implements ApuserDao {
 		}
 		return apusers;
 	}
+
+	@Override
+	public double getToaTimeByUserId(int userId) {
+		Connection conn=JDBCUtil.getConnection();
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		double toaTime=0;
+		String sql="select sum(ap_time) as toa_time from apuser where user_id="+userId;
+		
+		try {
+			ps=conn.prepareStatement(sql);
+			rs=query(ps);
+			if(rs.next())
+			{
+				toaTime=rs.getDouble("toa_time");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally
+		{
+			JDBCUtil.close(rs, ps, conn);
+		}
+		return toaTime;
+	}
 }

@@ -1,5 +1,6 @@
 package com.esh.dao;
 
+import java.sql.Connection;
 import java.util.List;
 
 import com.esh.entity.Suggestion;
@@ -12,4 +13,19 @@ public interface SuggestionDao {
 	 * @return
 	 */
 	public List<Suggestion> getSuggestionByDiseaseId(int diseaseId);
+
+	/**
+	 * 根据diseaseId和acupointId获取suggestion实体
+	 * @param apId
+	 * @param did
+	 * @return
+	 */
+	public Suggestion getSuggestionByAcupointIdAndDiseaseId(int apId, int did);
+
+	/**
+	 * 更新建议信息
+	 * @param suggestion
+	 * @return
+	 */
+	public int updateSuggestion(Suggestion suggestion, Connection conn);
 }

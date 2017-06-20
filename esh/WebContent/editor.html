@@ -1,0 +1,103 @@
+<!DOCTYPE html>  
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Signin</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/weui.min.css">
+    <link rel="stylesheet" href="./assets/css/jquery-weui.min.css">
+    <link rel="stylesheet" href="./assets/css/animate.css">
+    <link rel="stylesheet" href="./assets/css/swiper-3.4.2.min.css">
+  </head>
+  <body>
+
+    <div id="warpper">
+      <div id="bg" class="bgWhite"></div>
+      <header>
+        <div id="backBtn">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </div>
+        <div id="title">
+          编辑资料
+        </div>
+        <div id="menuBtn">
+          <div id="saveUserInfo" style="font-size: 18px;">保存</div>
+        </div>
+      </header>
+      <section>
+        <div id="editor">
+          <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+              <div class="weui-cell__hd"><label class="weui-label">昵称</label></div>
+              <div class="weui-cell__bd">
+                <input class="weui-input" type="text" placeholder="输入昵称" value="NISAL">
+              </div>
+            </div>
+            <div class="weui-cell">
+              <div class="weui-cell__hd"><label class="weui-label">性别</label></div>
+              <div class="weui-cell__bd">
+                <input class="weui-input" id="sex" type="text" placeholder="选择性别">
+              </div>
+            </div>
+            <div class="weui-cell">
+              <div class="weui-cell__hd"><label class="weui-label">出生日期</label></div>
+              <div class="weui-cell__bd">
+                <input class="weui-input" id="birthday" type="text" placeholder="设置">
+              </div>
+            </div>
+          </div>
+
+          <div class="weui-cells weui-cells_checkbox">
+            <label class="weui-cell weui-check__label" for="s11" style="margin-bottom: 0;">
+              <div class="weui-cell__hd">
+                <input type="checkbox" class="weui-check" name="checkbox1" id="s11" checked="checked">
+                <i class="weui-icon-checked"></i>
+              </div>
+              <div class="weui-cell__bd">
+                <p style="margin-top: 12px;">高血压</p>
+              </div>
+            </label>
+            <label class="weui-cell weui-check__label" for="s12">
+              <div class="weui-cell__hd">
+                <input type="checkbox" name="checkbox1" class="weui-check" id="s12" style="margin-bottom: 0;">
+                <i class="weui-icon-checked"></i>
+              </div>
+              <div class="weui-cell__bd">
+                <p style="margin-top: 12px;">糖尿病</p>
+              </div>
+            </label>
+            <label class="weui-cell weui-check__label" for="s13">
+              <div class="weui-cell__hd">
+                <input type="checkbox" name="checkbox1" class="weui-check" id="s13" style="margin-bottom: 0;">
+                <i class="weui-icon-checked"></i>
+              </div>
+              <div class="weui-cell__bd">
+                <p style="margin-top: 12px;">偏头痛</p>
+              </div>
+            </label>
+          </div>
+          <div class="weui-cells__tips">选择症状</div>
+
+        </div>
+      </section>  
+    </div>    
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/oha/jquery.cookie.js"></script>
+    <script src="assets/js/oha/oha_config.js"></script>
+    <script src="assets/js/oha/oha_api.js"></script>
+    <script src="assets/js/oha/oha_timer.js"></script>
+    <script src="assets/js/classie.js"></script>
+    <script src="./assets/js/eshAPI.js"></script>
+    <script src="./assets/js/layer/layer.js"></script>
+    <script src="./assets/js/jquery-weui.min.js"></script>
+    <script src="./assets/js/swiper-3.4.2.jquery.min.js"></script>
+    <script src="./assets/js/swiper.animate1.0.2.min.js"></script>
+    <script src="./assets/js/update.js"></script>
+  </body>
+</html>

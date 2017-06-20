@@ -7,13 +7,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.esh.dao.ApuserDao;
 import com.esh.dao.UserDao;
 import com.esh.entity.DetailUser;
 import com.esh.entity.User;
 import com.esh.globle.Constants;
+import com.esh.globle.Globle;
 import com.esh.json.form.request.SigninForm;
 import com.esh.json.form.request.SignupForm;
 import com.esh.json.form.request.UserInfoForm;
+import com.esh.json.form.response.UserProfile;
 import com.esh.service.UserService;
 import com.esh.utils.Utils;
 
@@ -23,16 +26,26 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	UserDao userDao;
 	
+	@Autowired
+	ApuserDao apuserDao;
+	
 	Logger logger=LoggerFactory.getLogger(getClass().getName());
 	
 	@Override
 	public int save(SignupForm signupForm) {
+		int errorCode=Constants.NO_ERROR_EXIST;
 		User user=new User();
 		user.setUname(signupForm.getAccount());
 		user.setPwd(signupForm.getPassword());
 		user.setUstatus(Constants.STATIC_ACTIVE);
+		user.setHpic(Globle.getDefaultHpic());
+		user.setHpicName(Constants.DEFAULT_HEAD_PICTURE_NAME);
 		int userId = userDao.save(user);
-		return userId;
+		if(userId==-1)//初始化值
+		{
+			errorCode=Constants.UNKNOWN_REGISTER_ERROR;
+		}
+		return errorCode;
 	}
 
 	@Override
@@ -133,24 +146,44 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int initHeadPicture(User user, String parentPath) {
+	public int initHeadPicture(byte[] pic, String picName, String parentPath) {
 		int errorCode=Constants.NO_ERROR_EXIST;
-		if(user.getHpic()!=null)
+		if(pic!=null)
 		{
-			String path=parentPath+"image_cache\\"+user.getHpicName();
+			String path=parentPath+"image_cache\\"+picName;
 			//若路径对应的文件不存在，则创建文件
 			if(!new File(path).exists())
 			{
-				if(!Utils.getFile(user.getHpic(), path))
+				if(!Utils.getFile(pic, path))
 				{
 					errorCode=Constants.INFORMATION_LOAD_DEFEAT;
 					logger.info("动图缓存失败：位置信息："+this.getClass().getName());
 				}else
 				{
-					logger.info("添加图片缓存成功,图片名称："+user.getHpicName());
+					logger.info("添加图片缓存成功,图片名称："+picName);
 				}
 			}
 		}
+		return errorCode;
+	}
+
+	@Override
+	public int getUserProfile(UserProfile userProfile) {
+		int errorCode=Constants.NO_ERROR_EXIST;
+		User user=userDao.getUserByUserId(userProfile.getUserId());
+		if(user!=null)
+		{
+			userProfile.setUserId(user.getUid());
+			userProfile.setUname(user.getUname());
+			userProfile.setUhdata(user.getHpic());
+			userProfile.setUhpic(user.getHpicName());
+			double toaTime=apuserDao.getToaTimeByUserId(userProfile.getUserId());
+			userProfile.setToaTime(toaTime);
+		}else
+		{
+			errorCode=Constants.INFORMATION_LOAD_DEFEAT;
+		}
+		logger.info(user==null&&userProfile.getToaTime()!=0?"用户概要信息获取失败，位置："+this.getClass().getName():"用户概要信息获取成功");
 		return errorCode;
 	}
 }

@@ -189,7 +189,6 @@ public class Utils {
 	 * @return
 	 */
 	public static List<String> savePic(List<byte[]> images, String parentPath) {
-		// TODO Auto-generated method stub
 		List<String> filenames=new ArrayList<String>();
 		Lock lock = new ReentrantLock();
 		for(byte[] image:images)
@@ -209,7 +208,6 @@ public class Utils {
 		}
 		return filenames;
 	}
-	
 
 	
 	/**

@@ -12,9 +12,9 @@ public class Apuser implements Serializable{
 	private int ustrength=0;//用户治疗强度
 	private int umode=0;//用户治疗模式
 	private int ufrequency=0;//用户治疗频率值
-	private int utime=0;//用户治疗时长
+	private double utime=0;//用户治疗时长,分钟
 	private int upulse=0;//用户治疗脉冲值
-	private int uperiod=0;//用户已治疗的疗程
+	private double uperiod=0;//用户已治疗的疗程,分钟
 	private Date updateTime=null;//更新时间
 	private User user=null;//用户
 	private Acupoint acupoint=null;//穴位
@@ -48,11 +48,11 @@ public class Apuser implements Serializable{
 		this.ufrequency = ufrequency;
 	}
 
-	public int getUtime() {
+	public double getUtime() {
 		return utime;
 	}
 
-	public void setUtime(int utime) {
+	public void setUtime(double utime) {
 		this.utime = utime;
 	}
 
@@ -64,11 +64,11 @@ public class Apuser implements Serializable{
 		this.upulse = upulse;
 	}
 
-	public int getUperiod() {
+	public double getUperiod() {
 		return uperiod;
 	}
 
-	public void setUperiod(int uperiod) {
+	public void setUperiod(double uperiod) {
 		this.uperiod = uperiod;
 	}
 

@@ -16,6 +16,12 @@ public class AcupointPicture implements Serializable{
 		
 	}
 
+	public AcupointPicture(int pictureId, byte[] data, String pictureName) {
+		this.pictureId = pictureId;
+		this.data = data;
+		this.pictureName = pictureName;
+	}
+
 	public int getPictureId() {
 		return pictureId;
 	}

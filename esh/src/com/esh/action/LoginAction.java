@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -52,8 +51,8 @@ public class LoginAction extends HttpServlet {
 		if(errorCode==Constants.NO_ERROR_EXIST)
 		{
 			request.getSession().setAttribute(Constants.USER_ID, signinForm.getUserId());
-			Cookie cookie=new Cookie("userId", signinForm.getUserId()+"");
-			response.addCookie(cookie);
+//			Cookie cookie=new Cookie("userId", signinForm.getUserId()+"");
+//			response.addCookie(cookie);
 			//更新用户登录时间
 			updateUserBasicInfo(signinForm);
 		}

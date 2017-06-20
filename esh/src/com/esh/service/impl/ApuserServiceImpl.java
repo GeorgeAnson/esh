@@ -11,9 +11,11 @@ import org.springframework.stereotype.Service;
 import com.esh.dao.AcupointDao;
 import com.esh.dao.ApuserDao;
 import com.esh.dao.DiseaseDao;
+import com.esh.dao.SuggestionDao;
 import com.esh.entity.Acupoint;
 import com.esh.entity.Apuser;
 import com.esh.entity.Disease;
+import com.esh.entity.Suggestion;
 import com.esh.globle.Constants;
 import com.esh.json.form.response.HistCueData;
 import com.esh.service.ApuserService;
@@ -29,6 +31,9 @@ public class ApuserServiceImpl implements ApuserService {
 	
 	@Autowired
 	DiseaseDao diseaseDao;
+	
+	@Autowired
+	SuggestionDao suggestionDao;
 	
 	Logger logger=LoggerFactory.getLogger(getClass().getName());
 	
@@ -80,7 +85,12 @@ public class ApuserServiceImpl implements ApuserService {
 				HistCueData cueData=new HistCueData();
 				cueData.setAcupointId(acupoint.getApId());
 				cueData.setAcupointName(acupoint.getApName());
-				cueData.setDevPeriod(apuser.getUperiod());
+				cueData.setUsrPeriod(apuser.getUperiod());
+				Suggestion suggestion=suggestionDao.getSuggestionByAcupointIdAndDiseaseId(acupoint.getApId(),disease.getDid());
+				if(suggestion!=null)
+				{
+					cueData.setDevPeriod(suggestion.getSperiod());
+				}
 				cueData.setDevTime(apuser.getUtime());
 				cueData.setDiseaseId(disease.getDid());
 				cueData.setDiseaseName(disease.getDname());

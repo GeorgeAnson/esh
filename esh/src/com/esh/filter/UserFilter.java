@@ -48,9 +48,9 @@ public class UserFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) resp;
 		String url=request.getRequestURI();
-		System.out.println("请求资源："+url);
+		System.out.println("请求资源："+url+"， 请求头信息："+request.getHeader("Cookie"));
 		boolean flag=false;
-		System.out.println("information: "+request.getParameter("signin"));
+		//System.out.println("information: "+request.getParameter("signin"));
 		
 		if(isCheckAble(request, initConfig)||isCheckAble(request, pass))
 		{

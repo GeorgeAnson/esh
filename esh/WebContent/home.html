@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/weui.min.css">
-    <link rel="stylesheet" href="assets/css/jquery-weui.min.css">
-    <link rel="stylesheet" href="assets/css/animate.css">
-    <link rel="stylesheet" href="assets/css/swiper-3.4.2.min.css">
+    <link rel="stylesheet" href="./assets/css/jquery-weui.min.css">
+    <link rel="stylesheet" href="./assets/css/animate.css">
+    <link rel="stylesheet" href="./assets/css/swiper-3.4.2.min.css">
   </head>
   <body>
     <div id="warpper">
@@ -31,30 +31,22 @@
             <div class="left" style="color: #CC0066"><span class="fa fa-tasks"></span></div>
             <div class="right">
               <div class="title" style="color: #CC0066">上一次理疗数据</div>
-              <div class="time"><span class="fa fa-history"></span> 2017-1-1 12:28</div>
-              <div class="time"><span class="fa fa-eyedropper"></span> 症状: 偏头痛</div>
-              <div class="time"><span class="fa fa-crop"></span> 穴位: 大椎穴</div>
-              <div class="time"><span class="fa fa-clock-o"></span> 理疗时间: 30分钟</div>
-              <div class="time"><span class="fa fa-calendar"></span> 疗程: 5/7</div>
+              <div><span class="fa fa-history"></span> <span class="time">没有数据</span></div>
+              <div><span class="fa fa-eyedropper"></span> 症状: <span class="disease">没有数据</span></div>
+              <div><span class="fa fa-crop"></span> 穴位: <span class="acupoint">没有数据</span></div>
+              <div><span class="fa fa-clock-o"></span> 理疗时间: <span class="devTime">没有数据</span></div>
+              <div><span class="fa fa-calendar"></span> 疗程: <span class="period">没有数据</span></div>
               <button type="button">开始下一个疗程</button>
             </div>
             <div class="clearfix"></div>
           </div>
         </div>
       </section>
-      
-      
-          <section>
-  		  <span id="show"></span>
-          </section>
-      
-      
-      
       <div id="sidebar">
         <div class="sideBarMenu"><a href="./home.html" class="active"><div class="icon"><span class="fa fa-cube"></span></div><div class="title">首页</div></a></div>
         <div class="sideBarMenu"><a href="./selectEquit.html"><div class="icon"><span class="fa fa-magic"></span></div><div class="title">理疗</div></a></div>
         <div class="sideBarMenu"><a href="./chat.html"><div class="icon"><span class="fa fa-comments-o"></span></div><div class="title">在线咨询</div></a></div>
-        <div class="sideBarMenu"><a href="/test/userMenu"><div class="icon"><span class="fa fa-user"></span></div><div class="title">我</div></a></div>
+        <div class="sideBarMenu"><a href="./userMenu.html"><div class="icon"><span class="fa fa-user"></span></div><div class="title">我</div></a></div>
       </div>
     </div>
 
@@ -65,107 +57,13 @@
     <script src="assets/js/oha/oha_api.js"></script>
     <script src="assets/js/oha/oha_timer.js"></script>
     <script src="assets/js/classie.js"></script>
-    <script src="assets/js/eshAPI.js"></script>
-    <script src="assets/js/layer/layer.js"></script>
-    <script src="assets/js/jquery-weui.min.js"></script>
-    <script src="assets/js/swiper-3.4.2.jquery.min.js"></script>
-    <script src="assets/js/swiper.animate1.0.2.min.js"></script>
+    <script src="./assets/js/layer/layer.js"></script>
+    <script src="./assets/js/jquery-weui.min.js"></script>
+    <script src="./assets/js/swiper-3.4.2.jquery.min.js"></script>
+    <script src="./assets/js/swiper.animate1.0.2.min.js"></script>
     <script src="assets/js/update.js"></script>
-    <script src="assets/js/echarts.min.js"></script>
-    <script>
-        $('#lastTimeData').addClass('animated fadeInLeft');
-        setTimeout(function(){
-          $('#lastTimeData').removeClass('animated fadeInLeft');
-        }, 1000);
-    </script>
+    <script src="./assets/js/echarts.min.js"></script>
+    <script src="./assets/js/eshAPI.js"></script>
     
-	  <script>
-	   //  document.getElementById('show').innerText = localStorage.inputText;
-	   // $(document).ready(function(){
-	   // 	alert('cookie: '+oha_api.cookieRead('userId','null'));
-	   //  });
-	  </script>
-	  
-	  <script type="text/javascript">
-    $(document).ready(function(){
-    	//获取推荐的穴位列表，针对病症的穴位列表，推荐指数
-    	/*
-    	$.ajax({
-		    type: "GET",
-		    url: './getAcupList',
-		    data:{
-		    	'type':'init',
-		    	'getAcupList':JSON.stringify({'userId': 9, 'diseaseId': 2})
-		    },
-		    dataType: "json",
-		    success: function(data){
-		    	alert(data)
-		    },
-		    error: function(jqXHR){
-		    	layer.msg(jqXHR.status);
-		    }
-	  	 });
-    	*/
-    	
-    	//获取某个穴位的具体信息，穴位描述，动图
-    	
-    	$.ajax({
-		    type: "GET",
-		    url: './getAcupInfo',
-		    data:{
-		    	'type': 'detail',
-		        'acupId':2
-		    },
-		    dataType: "json",
-		    success: function(data){
-		    	//alert(data)
-		    },
-		    error: function(jqXHR){
-		    	layer.msg(jqXHR.status);
-		    }
-	  	 });
-    	
-    	
-    	//获取历史治疗数据
-    	//单击下一疗程时，不走流程获取推荐列表，直接进治疗页面
-    	/*
-    	$.ajax({
-		    type: "GET",
-		    url: './getHistOpData',
-		    data:{
-		    	'type': 'init',
-		        'id':9
-		    },
-		    dataType: "json",
-		    success: function(data){
-		    	alert(data)
-		    },
-		    error: function(jqXHR){
-		    	layer.msg(jqXHR.status);
-		    }
-	  	 });
-    	*/
-    	//单击下一疗程时，不走流程获取推荐列表，直接进治疗页面
-    	//获取穴位治疗参数
-    	//与单击详情页开始治疗时执行方法相同
-    	/*
-    	$.ajax({
-		    type: "GET",
-		    url: './getAcupOpInfo',
-		    data:{
-		    	'type':'init',
-		    	'getAcupOpInfo': JSON.stringify({"userId": 9, "acupointId": 2, "diseaseId": 2})
-		    },
-		    dataType: "json",
-		    success: function(data){
-		    	alert(data)
-		    },
-		    error: function(jqXHR){
-		    	layer.msg(jqXHR.status);
-		    }
-	  	 });
-    	*/
-    });
-    </script>
   </body>
 </html>

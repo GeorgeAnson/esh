@@ -1,5 +1,7 @@
 package com.esh.dao.jdbc;
 
+import java.sql.Connection;
+
 import org.springframework.stereotype.Service;
 
 import com.esh.dao.QuestionDao;
@@ -9,7 +11,7 @@ import com.esh.entity.Question;
 public class QuestionDaoImpl extends JDBCBase implements QuestionDao {
 
 	@Override
-	public int saveUserQuestion(Question question) {
+	public int saveUserQuestion(Question question,  Connection conn) {
 		String sql="insert into question(user_id, d_id, s_id,satisfaction, time,effect) values(?,?,?,?,?,?)";
 		Object[] parma={
 			question.getUser().getUid(),
@@ -19,7 +21,7 @@ public class QuestionDaoImpl extends JDBCBase implements QuestionDao {
 			question.getTime(),
 			question.getEffection()
 		};
-		int id=save(sql, parma);
+		int id=save(sql, parma,conn);
 		return id;
 	}
 }

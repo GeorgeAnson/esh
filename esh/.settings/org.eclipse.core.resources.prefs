@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 encoding//src/com/esh/dao/jdbc/JDBCBase.java=UTF-8
+encoding//src/com/esh/dao/jdbc/JDBCUtil.java=UTF-8
 encoding//src/com/esh/filter/UserFilter.java=UTF-8
 encoding//src/com/esh/globle/Constants.java=UTF-8
 encoding//src/com/esh/listener/OnLineListener.java=UTF-8
